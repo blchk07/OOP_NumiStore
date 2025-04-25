@@ -1,4 +1,5 @@
 using OOP_NumiStore.Forms;
+using OOP_NumiStore.Models;
 
 namespace OOP_NumiStore
 {
@@ -13,17 +14,21 @@ namespace OOP_NumiStore
         {
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
-            if (login == "1" && password == "1")
-            //if (true)
+
+            UsersManager usersManager = new UsersManager();
+            usersManager.AddCustomer(new Customer() { Login = "2", Password = "2", Address = "2", Email = "2", Name = "2", Surname = "2" });
+            User? currentUser = usersManager.Login(login, password, out string errorMessage);
+
+            if (currentUser != null)
             {
-                // Open the main form or perform any other action
-                MainAdminForm mainForm = new MainAdminForm();
+                MessageBox.Show($"{currentUser.Login} - {currentUser.Password}", "!!!");
+                MainAdminForm mainForm = new MainAdminForm(currentUser);
                 mainForm.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Invalid login or password.", "Warning");
+                MessageBox.Show(errorMessage, "Помилка");
             }
         }
     }

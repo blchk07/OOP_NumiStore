@@ -49,11 +49,11 @@
             label10 = new Label();
             coinDiametrTextBox = new TextBox();
             label11 = new Label();
-            coinDescriptionTextBox = new TextBox();
             coinPictureBox = new PictureBox();
             coinChangeButton = new Button();
             panel1 = new Panel();
             saveChangesButton = new Button();
+            coinDescriptionTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)coinPictureBox).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -229,15 +229,6 @@
             label11.TabIndex = 28;
             label11.Text = "Опис";
             // 
-            // coinDescriptionTextBox
-            // 
-            coinDescriptionTextBox.Location = new Point(134, 397);
-            coinDescriptionTextBox.Multiline = true;
-            coinDescriptionTextBox.Name = "coinDescriptionTextBox";
-            coinDescriptionTextBox.ScrollBars = ScrollBars.Vertical;
-            coinDescriptionTextBox.Size = new Size(474, 63);
-            coinDescriptionTextBox.TabIndex = 27;
-            // 
             // coinPictureBox
             // 
             coinPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -251,6 +242,7 @@
             // coinChangeButton
             // 
             coinChangeButton.Anchor = AnchorStyles.None;
+            coinChangeButton.Cursor = Cursors.Hand;
             coinChangeButton.Location = new Point(50, 229);
             coinChangeButton.Name = "coinChangeButton";
             coinChangeButton.Size = new Size(114, 23);
@@ -270,22 +262,32 @@
             // 
             // saveChangesButton
             // 
+            saveChangesButton.Cursor = Cursors.Hand;
             saveChangesButton.Location = new Point(253, 477);
             saveChangesButton.Name = "saveChangesButton";
             saveChangesButton.Size = new Size(169, 30);
             saveChangesButton.TabIndex = 32;
             saveChangesButton.Text = "Зберегти";
             saveChangesButton.UseVisualStyleBackColor = true;
+            saveChangesButton.Click += saveChangesButton_Click;
+            // 
+            // coinDescriptionTextBox
+            // 
+            coinDescriptionTextBox.Location = new Point(134, 397);
+            coinDescriptionTextBox.Name = "coinDescriptionTextBox";
+            coinDescriptionTextBox.Size = new Size(474, 63);
+            coinDescriptionTextBox.TabIndex = 33;
+            coinDescriptionTextBox.Text = "";
             // 
             // EditCoinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(651, 519);
+            Controls.Add(coinDescriptionTextBox);
             Controls.Add(saveChangesButton);
             Controls.Add(panel1);
             Controls.Add(label11);
-            Controls.Add(coinDescriptionTextBox);
             Controls.Add(label9);
             Controls.Add(coinSeriesTextBox);
             Controls.Add(label10);
@@ -306,6 +308,8 @@
             Controls.Add(coinMaterialTextBox);
             Controls.Add(coinYearTextBox);
             Controls.Add(coinNameTextBox);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "EditCoinForm";
             Text = "Редагування монети";
             ((System.ComponentModel.ISupportInitialize)coinPictureBox).EndInit();
@@ -336,10 +340,10 @@
         private Label label10;
         private TextBox coinDiametrTextBox;
         private Label label11;
-        private TextBox coinDescriptionTextBox;
         private PictureBox coinPictureBox;
         private Button coinChangeButton;
         private Panel panel1;
         private Button saveChangesButton;
+        private RichTextBox coinDescriptionTextBox;
     }
 }

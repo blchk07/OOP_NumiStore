@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using OOP_NumiStore.Models;
 using OOP_NumiStore.Forms;
+using System.Security.Cryptography;
 
 namespace OOP_NumiStore
 {
@@ -20,19 +21,32 @@ namespace OOP_NumiStore
             InitializeComponent();
         }
 
+        public Coin Coin { get; set; }
+
         [Category("Custom Props")]
         public string CoinTitle
         {
             get { return coinTitle.Text; }
             set { coinTitle.Text = value; }
         }
-        public Coin Coin { get; set; }
+
+        [Category("Custom props")]
+        public string YearCoin
+        {
+            set { yearCoinText.Text = $"Рік: {value}"; }
+        }
+
+        [Category("Custom props")]
+        public string CountryCoin
+        {
+            set { countryCoinText.Text = $"Країна: {value}"; }
+        }
 
         [Category("Custom Props")]
         public string PriceCoin
         {
-            get { return priceCoin.Text; }
-            set { priceCoin.Text = value; }
+            //get { return priceCoinText.Text; }
+            set { priceCoinText.Text = $"Ціна: {value} грн."; }
         }
         [Category("Custom Props")]
         public Image CoinImage
@@ -49,7 +63,7 @@ namespace OOP_NumiStore
 
         private void coinDetailButton_Click(object sender, EventArgs e)
         {
-            EditCoinForm modalForm = new (Coin);
+            EditCoinForm modalForm = new(Coin);
             modalForm.ShowDialog();
         }
     }

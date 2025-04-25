@@ -1,28 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_NumiStore.Models
 {
-    public class CoinCollection
-    {
-        public List<Coin> Coins { get; set; }
-        public CoinCollection()
-        {
-            Coins = new List<Coin>();
-        }
-        public void AddCoin(Coin coin)
-        {
-            Coins.Add(coin);
-        }
-        public void RemoveCoin(Coin coin)
-        {
-            Coins.Remove(coin);
-        }
-    }
-
     public class Coin
     {
         private static int _idCounter = 1;

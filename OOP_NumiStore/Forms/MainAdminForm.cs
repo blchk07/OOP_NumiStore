@@ -14,12 +14,14 @@ namespace OOP_NumiStore.Forms
 {
     public partial class MainAdminForm : Form
     {
-        CoinCollection coinCollection = new CoinCollection();
-        public MainAdminForm()
+        CoinsList CoinList = new CoinsList();
+        User currentUser { get; set; }
+
+        public MainAdminForm(User currentUser)
         {
             InitializeComponent();
+            this.currentUser = currentUser;
 
-            // Example coins
             Coin coin1 = new Coin
             {
                 Name = "Києво-Печерська лавра",
@@ -72,17 +74,17 @@ namespace OOP_NumiStore.Forms
                 Diameter = 35.0,
                 Series = "Космос України",
             };
-            coinCollection.AddCoin(coin1);
-            coinCollection.AddCoin(coin2);
-            coinCollection.AddCoin(coin3);
-            coinCollection.AddCoin(coin4);
-            loadCoins(flowLayoutPanel1, coinCollection);
+            CoinList.AddCoin(coin1);
+            CoinList.AddCoin(coin2);
+            CoinList.AddCoin(coin3);
+            CoinList.AddCoin(coin4);
+            loadCoins(flowLayoutPanel1, CoinList);
         }
 
-        private void loadCoins(FlowLayoutPanel currentFlowLayoutPanel, CoinCollection currentCoinCollection)
+        private void loadCoins(FlowLayoutPanel currentFlowLayoutPanel, CoinsList currentCoinCollection)
         {
             currentFlowLayoutPanel.Controls.Clear();
-            // Load coins into the flow layout panel
+
             foreach (Coin coin in currentCoinCollection.Coins)
             {
                 BaseCoinBox adminListCoin = new BaseCoinBox
@@ -90,11 +92,13 @@ namespace OOP_NumiStore.Forms
                     Coin = coin,
                     Width = currentFlowLayoutPanel.Width - 20,
                     CoinTitle = coin.Name,
-                    PriceCoin = $"Ціна: {coin.Price} грн.",
+                    YearCoin = Convert.ToString(coin.Year),
+                    CountryCoin = coin.Country,
+                    PriceCoin = Convert.ToString(coin.Price),
                     CoinImage = coin.Image,
                 };
-                // Testing
-                adminListCoin.CoinDetailButton.Visible = coin.Price > 1000;
+                adminListCoin.customerPanelButtons.Visible = (currentUser is Customer);
+                adminListCoin.adminPanelButtons.Visible = (currentUser is Admin);
                 //
                 currentFlowLayoutPanel.Controls.Add(adminListCoin);
             }

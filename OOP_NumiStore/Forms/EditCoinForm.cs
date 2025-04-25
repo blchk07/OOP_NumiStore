@@ -16,6 +16,7 @@ namespace OOP_NumiStore.Forms
         public EditCoinForm(Coin coin)
         {
             InitializeComponent();
+            currentCoin = coin;
             coinIdTextBox.Text = Convert.ToString(coin.Id);
             coinNameTextBox.Text = coin.Name;
             coinYearTextBox.Text = Convert.ToString(coin.Year);
@@ -27,6 +28,16 @@ namespace OOP_NumiStore.Forms
             coinDiametrTextBox.Text = Convert.ToString(coin.Diameter);
             coinSeriesTextBox.Text = coin.Series;
             coinDescriptionTextBox.Text = coin.Description;
+        }
+
+        private Coin currentCoin { get; set; }
+
+        private void saveChangesButton_Click(object sender, EventArgs e)
+        {
+            if (coinNameTextBox.Text.Trim() != currentCoin.Name.Trim())
+            {
+                currentCoin.Name = coinNameTextBox.Text.Trim();
+            }
         }
     }
 }

@@ -43,7 +43,7 @@
             headName.Anchor = AnchorStyles.Top;
             headName.AutoSize = true;
             headName.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            headName.Location = new Point(88, 10);
+            headName.Location = new Point(90, 25);
             headName.Name = "headName";
             headName.Size = new Size(391, 76);
             headName.TabIndex = 0;
@@ -54,7 +54,7 @@
             loginLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             loginLabel.AutoSize = true;
             loginLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            loginLabel.Location = new Point(145, 119);
+            loginLabel.Location = new Point(147, 134);
             loginLabel.Name = "loginLabel";
             loginLabel.Size = new Size(64, 30);
             loginLabel.TabIndex = 1;
@@ -65,7 +65,7 @@
             passwordLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            passwordLabel.Location = new Point(145, 182);
+            passwordLabel.Location = new Point(147, 197);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(85, 30);
             passwordLabel.TabIndex = 2;
@@ -73,14 +73,14 @@
             // 
             // loginTextBox
             // 
-            loginTextBox.Location = new Point(239, 126);
+            loginTextBox.Location = new Point(241, 141);
             loginTextBox.Name = "loginTextBox";
             loginTextBox.Size = new Size(182, 23);
             loginTextBox.TabIndex = 3;
             // 
             // passwordTextBox
             // 
-            passwordTextBox.Location = new Point(239, 189);
+            passwordTextBox.Location = new Point(241, 204);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(182, 23);
             passwordTextBox.TabIndex = 4;
@@ -90,7 +90,7 @@
             loginButton.Anchor = AnchorStyles.Top;
             loginButton.Cursor = Cursors.Hand;
             loginButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            loginButton.Location = new Point(211, 249);
+            loginButton.Location = new Point(216, 264);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(139, 42);
             loginButton.TabIndex = 5;
@@ -107,7 +107,7 @@
             panel1.Controls.Add(loginLabel);
             panel1.Controls.Add(loginTextBox);
             panel1.Controls.Add(passwordTextBox);
-            panel1.Location = new Point(114, 58);
+            panel1.Location = new Point(116, 58);
             panel1.Name = "panel1";
             panel1.Size = new Size(571, 331);
             panel1.TabIndex = 6;
