@@ -17,10 +17,10 @@ namespace OOP_NumiStore.Forms
         CoinsList CoinList = new CoinsList();
         User currentUser { get; set; }
 
-        public MainAdminForm(User currentUser)
+        public MainAdminForm()
         {
             InitializeComponent();
-            this.currentUser = currentUser;
+            currentUser = UserSession.currentUser;
 
             Coin coin1 = new Coin
             {
@@ -87,7 +87,7 @@ namespace OOP_NumiStore.Forms
 
             foreach (Coin coin in currentCoinCollection.Coins)
             {
-                BaseCoinBox adminListCoin = new BaseCoinBox
+                BaseCoinBox adminListCoin = new BaseCoinBox(currentUser)
                 {
                     Coin = coin,
                     Width = currentFlowLayoutPanel.Width - 20,
@@ -97,8 +97,6 @@ namespace OOP_NumiStore.Forms
                     PriceCoin = Convert.ToString(coin.Price),
                     CoinImage = coin.Image,
                 };
-                adminListCoin.customerPanelButtons.Visible = (currentUser is Customer);
-                adminListCoin.adminPanelButtons.Visible = (currentUser is Admin);
                 //
                 currentFlowLayoutPanel.Controls.Add(adminListCoin);
             }

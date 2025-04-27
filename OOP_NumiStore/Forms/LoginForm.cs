@@ -5,31 +5,54 @@ namespace OOP_NumiStore
 {
     public partial class LoginForm : Form
     {
+        UsersManager usersManager;
         public LoginForm()
         {
             InitializeComponent();
+            usersManager = new UsersManager();
+            //usersManager.GenerateTestDataForAdmin();
+            //usersManager.GenerateTestDataForCustomer();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string login = loginTextBox.Text;
-            string password = passwordTextBox.Text;
+            string login = loginTextBox.Text.Trim();
+            string password = passwordTextBox.Text.Trim();
 
-            UsersManager usersManager = new UsersManager();
-            usersManager.AddCustomer(new Customer() { Login = "2", Password = "2", Address = "2", Email = "2", Name = "2", Surname = "2" });
+            if (login == "" || password == "")
+            {
+                MessageBox.Show("Поля логіну та паролю мають бути заповнені!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             User? currentUser = usersManager.Login(login, password, out string errorMessage);
 
             if (currentUser != null)
             {
-                MessageBox.Show($"{currentUser.Login} - {currentUser.Password}", "!!!");
-                MainAdminForm mainForm = new MainAdminForm(currentUser);
-                mainForm.Show();
-                this.Hide();
+                if (currentUser is Admin)
+                {
+                    UserSession.Login(currentUser);
+                    MainAdminForm mainAdminForm = new MainAdminForm();
+                    mainAdminForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    UserSession.Login(currentUser);
+                    MainCustomerForm mainCustomerForm = new MainCustomerForm();
+                    mainCustomerForm.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                MessageBox.Show(errorMessage, "Помилка");
+                MessageBox.Show(errorMessage, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

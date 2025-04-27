@@ -35,6 +35,7 @@
             passwordTextBox = new TextBox();
             loginButton = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -82,6 +83,7 @@
             // 
             passwordTextBox.Location = new Point(241, 204);
             passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.PasswordChar = '●';
             passwordTextBox.Size = new Size(182, 23);
             passwordTextBox.TabIndex = 4;
             // 
@@ -89,8 +91,8 @@
             // 
             loginButton.Anchor = AnchorStyles.Top;
             loginButton.Cursor = Cursors.Hand;
-            loginButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            loginButton.Location = new Point(216, 264);
+            loginButton.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            loginButton.Location = new Point(216, 260);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(139, 42);
             loginButton.TabIndex = 5;
@@ -101,6 +103,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(headName);
             panel1.Controls.Add(passwordLabel);
             panel1.Controls.Add(loginButton);
@@ -109,8 +112,20 @@
             panel1.Controls.Add(passwordTextBox);
             panel1.Location = new Point(116, 58);
             panel1.Name = "panel1";
-            panel1.Size = new Size(571, 331);
+            panel1.Size = new Size(571, 350);
             panel1.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Cursor = Cursors.Hand;
+            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(222, 315);
+            label1.Name = "label1";
+            label1.Size = new Size(127, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Зареєструвати акаунт";
+            label1.Click += label1_Click;
             // 
             // LoginForm
             // 
@@ -134,5 +149,6 @@
         private TextBox passwordTextBox;
         private Button loginButton;
         private Panel panel1;
+        private Label label1;
     }
 }

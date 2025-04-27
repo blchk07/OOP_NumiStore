@@ -16,9 +16,16 @@ namespace OOP_NumiStore
 {
     public partial class BaseCoinBox : UserControl
     {
-        public BaseCoinBox()
+        public BaseCoinBox(User currentUser)
         {
             InitializeComponent();
+            InitializeButtonsBlock(currentUser);
+        }
+
+        private void InitializeButtonsBlock(User currentUser)
+        {
+            customerPanelButtons.Visible = currentUser is Customer;
+            adminPanelButtons.Visible = currentUser is Admin;
         }
 
         public Coin Coin { get; set; }
