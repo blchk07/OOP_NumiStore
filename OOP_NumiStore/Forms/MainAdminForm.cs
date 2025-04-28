@@ -86,7 +86,7 @@ namespace OOP_NumiStore.Forms
             loadCoins();
         }
 
-        private void loadCoins()
+        public void loadCoins()
         {
             flowLayoutPanel1.Controls.Clear();
 
@@ -101,6 +101,7 @@ namespace OOP_NumiStore.Forms
                     CountryCoin = coin.Country,
                     PriceCoin = Convert.ToString(coin.Price),
                     CoinImage = coin.Image,
+                    MainAdminForm = this,
                 };
                 //
                 flowLayoutPanel1.Controls.Add(adminListCoin);

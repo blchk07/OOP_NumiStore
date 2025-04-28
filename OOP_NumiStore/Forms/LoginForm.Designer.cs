@@ -35,7 +35,7 @@
             passwordTextBox = new TextBox();
             loginButton = new Button();
             panel1 = new Panel();
-            label1 = new Label();
+            registrationLabel = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -103,7 +103,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top;
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(registrationLabel);
             panel1.Controls.Add(headName);
             panel1.Controls.Add(passwordLabel);
             panel1.Controls.Add(loginButton);
@@ -115,17 +115,17 @@
             panel1.Size = new Size(571, 350);
             panel1.TabIndex = 6;
             // 
-            // label1
+            // registrationLabel
             // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(222, 315);
-            label1.Name = "label1";
-            label1.Size = new Size(127, 15);
-            label1.TabIndex = 6;
-            label1.Text = "Зареєструвати акаунт";
-            label1.Click += label1_Click;
+            registrationLabel.AutoSize = true;
+            registrationLabel.Cursor = Cursors.Hand;
+            registrationLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            registrationLabel.Location = new Point(222, 315);
+            registrationLabel.Name = "registrationLabel";
+            registrationLabel.Size = new Size(127, 15);
+            registrationLabel.TabIndex = 6;
+            registrationLabel.Text = "Зареєструвати акаунт";
+            registrationLabel.Click += registrationLabel_Click;
             // 
             // LoginForm
             // 
@@ -149,6 +149,6 @@
         private TextBox passwordTextBox;
         private Button loginButton;
         private Panel panel1;
-        private Label label1;
+        private Label registrationLabel;
     }
 }

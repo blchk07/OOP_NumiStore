@@ -14,6 +14,7 @@ namespace OOP_NumiStore.Forms
 {
     public partial class EditCoinForm : Form
     {
+        public bool isSaved { get; private set; } = false;
         public EditCoinForm(Coin coin)
         {
             InitializeComponent();
@@ -96,6 +97,7 @@ namespace OOP_NumiStore.Forms
             currentCoin.Series = coinSeriesComboBox.Text.Trim();
             currentCoin.Description = coinDescriptionTextBox.Text.Trim();
 
+            isSaved = true;
             MessageBox.Show("Зміни збережено!", "Успішна зміна", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

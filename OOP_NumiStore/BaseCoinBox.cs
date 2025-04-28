@@ -27,6 +27,7 @@ namespace OOP_NumiStore
             customerPanelButtons.Visible = currentUser is Customer;
             adminPanelButtons.Visible = currentUser is Admin;
         }
+        public MainAdminForm? MainAdminForm { get; set; } = null;
 
         public Coin Coin { get; set; }
 
@@ -64,14 +65,15 @@ namespace OOP_NumiStore
         [Category("Custom Props")]
         public Button CoinDetailButton
         {
-            get { return coinDetailButton; }
-            set { coinDetailButton = value; }
+            get { return coinEditButton; }
+            set { coinEditButton = value; }
         }
 
-        private void coinDetailButton_Click(object sender, EventArgs e)
+        private void coinEditButton_Click(object sender, EventArgs e)
         {
             EditCoinForm modalForm = new(Coin);
             modalForm.ShowDialog();
+            if (modalForm.isSaved && MainAdminForm != null) MainAdminForm.loadCoins();
         }
     }
 }

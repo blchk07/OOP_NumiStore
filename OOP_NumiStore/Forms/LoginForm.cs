@@ -50,9 +50,11 @@ namespace OOP_NumiStore
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void registrationLabel_Click(object sender, EventArgs e)
         {
-
+            RegistrationForm registrationForm = new RegistrationForm();
+            registrationForm.Show();
+            this.Hide();
         }
     }
 }

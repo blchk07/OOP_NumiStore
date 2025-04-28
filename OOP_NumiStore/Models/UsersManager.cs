@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.IO;
 
 namespace OOP_NumiStore.Models
 {
@@ -31,6 +32,88 @@ namespace OOP_NumiStore.Models
 
             ReadAdminsFromFile();
             ReadCustomersFromFile();
+        }
+
+        public Admin? RegisterAdmin(string login, string password, string email, string name, string surname, out string errorMessage)
+        {
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname))
+            {
+                errorMessage = "Деякі поля незаповнені.";
+                return null;
+            }
+
+            if (Customers.Any(a => a.Login == login) || Admins.Any(a => a.Login == login))
+            {
+                errorMessage = "Користувач з таким логіном вже існує.";
+                return null;
+            }
+
+            if (Customers.Any(a => a.Email == email) || Admins.Any(a => a.Email == email))
+            {
+                errorMessage = "Користувач з такою електронною поштою вже існує.";
+                return null;
+            }
+
+            Admin admin = new Admin()
+            {
+                Login = login,
+                Password = password,
+                Email = email,
+                Name = name,
+                Surname = surname
+            };
+
+            if (!AddAdmin(admin))
+            {
+                errorMessage = "Помилка при додаванні адміністратора.";
+                return null;
+            }
+
+            SaveToFile(adminPath, Admins);
+
+            errorMessage = null;
+            return admin;
+        }
+
+        public Customer? RegisterCustomer(string login, string password, string email, string name, string surname, out string errorMessage)
+        {
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname))
+            {
+                errorMessage = "Деякі поля незаповнені.";
+                return null;
+            }
+
+            if (Customers.Any(a => a.Login == login) || Admins.Any(a => a.Login == login))
+            {
+                errorMessage = "Користувач з таким логіном вже існує.";
+                return null;
+            }
+
+            if (Customers.Any(a => a.Email == email) || Admins.Any(a => a.Email == email))
+            {
+                errorMessage = "Користувач з такою електронною поштою вже існує.";
+                return null;
+            }
+
+            Customer customer = new Customer()
+            {
+                Login = login,
+                Password = password,
+                Email = email,
+                Name = name,
+                Surname = surname
+            };
+
+            if (!AddCustomer(customer))
+            {
+                errorMessage = "Помилка при додаванні адміністратора.";
+                return null;
+            }
+
+            SaveToFile(customerPath, Customers);
+
+            errorMessage = null;
+            return customer;
         }
 
         public bool AddAdmin(Admin admin)
@@ -138,8 +221,7 @@ namespace OOP_NumiStore.Models
         //            Password = $"q{i}",
         //            Email = $"test.email{i}@gmail.com",
         //            Name = $"TestName{i}",
-        //            Surname = $"TestSurname{i}",
-        //            Address = $"{i} Apple Road"
+        //            Surname = $"TestSurname{i}"
         //        });
         //    }
         //    SaveToFile(adminPath, Admins);
@@ -164,8 +246,7 @@ namespace OOP_NumiStore.Models
         //            Password = $"q{i}",
         //            Email = $"test.email{i}@gmail.com",
         //            Name = $"TestName{i}",
-        //            Surname = $"TestSurname{i}",
-        //            Address = $"{i} Apple Road"
+        //            Surname = $"TestSurname{i}"
         //        });
         //    }
         //    SaveToFile(customerPath, Customers);

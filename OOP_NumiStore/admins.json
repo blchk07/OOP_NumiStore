@@ -1,10 +1,9 @@
 [
   {
-    "Login": "t1",
-    "Password": "q1",
-    "Name": "TestName1",
-    "Surname": "TestSurname1",
-    "Email": "test.email1@gmail.com",
-    "Address": "1 Apple Road"
+    "Login": "admin",
+    "Password": "0",
+    "Name": "admin",
+    "Surname": "admin",
+    "Email": "email"
   }
 ]

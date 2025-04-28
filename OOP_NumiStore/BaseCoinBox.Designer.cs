@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseCoinBox));
             coinTitle = new Label();
             priceCoinText = new Label();
-            coinDetailButton = new Button();
+            coinEditButton = new Button();
             pictureCoin = new PictureBox();
             yearCoinText = new Label();
             countryCoinText = new Label();
@@ -64,18 +64,18 @@
             priceCoinText.TabIndex = 1;
             priceCoinText.Text = "Ціна:";
             // 
-            // coinDetailButton
+            // coinEditButton
             // 
-            coinDetailButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            coinDetailButton.BackColor = Color.WhiteSmoke;
-            coinDetailButton.Cursor = Cursors.Hand;
-            coinDetailButton.Location = new Point(32, 67);
-            coinDetailButton.Name = "coinDetailButton";
-            coinDetailButton.Size = new Size(77, 25);
-            coinDetailButton.TabIndex = 2;
-            coinDetailButton.Text = "Редагувати";
-            coinDetailButton.UseVisualStyleBackColor = true;
-            coinDetailButton.Click += coinDetailButton_Click;
+            coinEditButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            coinEditButton.BackColor = Color.WhiteSmoke;
+            coinEditButton.Cursor = Cursors.Hand;
+            coinEditButton.Location = new Point(32, 67);
+            coinEditButton.Name = "coinEditButton";
+            coinEditButton.Size = new Size(77, 25);
+            coinEditButton.TabIndex = 2;
+            coinEditButton.Text = "Редагувати";
+            coinEditButton.UseVisualStyleBackColor = true;
+            coinEditButton.Click += coinEditButton_Click;
             // 
             // pictureCoin
             // 
@@ -119,7 +119,7 @@
             // adminPanelButtons
             // 
             adminPanelButtons.Anchor = AnchorStyles.Right;
-            adminPanelButtons.Controls.Add(coinDetailButton);
+            adminPanelButtons.Controls.Add(coinEditButton);
             adminPanelButtons.Controls.Add(coinDeleteButton);
             adminPanelButtons.Location = new Point(550, 0);
             adminPanelButtons.Name = "adminPanelButtons";
@@ -170,8 +170,8 @@
             Controls.Add(pictureCoin);
             Controls.Add(priceCoinText);
             Controls.Add(coinTitle);
-            Controls.Add(customerPanelButtons);
             Controls.Add(adminPanelButtons);
+            Controls.Add(customerPanelButtons);
             Margin = new Padding(0, 8, 0, 0);
             Name = "BaseCoinBox";
             Size = new Size(690, 118);
@@ -186,7 +186,7 @@
 
         private Label coinTitle;
         private Label priceCoinText;
-        private Button coinDetailButton;
+        private Button coinEditButton;
         private PictureBox pictureCoin;
         private Label yearCoinText;
         private Label countryCoinText;
