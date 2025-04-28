@@ -30,10 +30,8 @@
         {
             coinNameTextBox = new TextBox();
             coinYearTextBox = new TextBox();
-            coinMaterialTextBox = new TextBox();
             coinPriceTextBox = new TextBox();
             coinAvaiableCountTextBox = new TextBox();
-            coinCountryTextBox = new TextBox();
             coinIdTextBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
@@ -45,7 +43,6 @@
             label8 = new Label();
             coinDenominationTextBox = new TextBox();
             label9 = new Label();
-            coinSeriesTextBox = new TextBox();
             label10 = new Label();
             coinDiametrTextBox = new TextBox();
             label11 = new Label();
@@ -54,56 +51,46 @@
             panel1 = new Panel();
             saveChangesButton = new Button();
             coinDescriptionTextBox = new RichTextBox();
+            coinMaterialComboBox = new ComboBox();
+            coinCountryComboBox = new ComboBox();
+            coinSeriesComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)coinPictureBox).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // coinNameTextBox
             // 
-            coinNameTextBox.Location = new Point(134, 54);
+            coinNameTextBox.Location = new Point(144, 54);
             coinNameTextBox.Name = "coinNameTextBox";
             coinNameTextBox.Size = new Size(168, 23);
             coinNameTextBox.TabIndex = 1;
             // 
             // coinYearTextBox
             // 
-            coinYearTextBox.Location = new Point(134, 92);
+            coinYearTextBox.Location = new Point(144, 92);
             coinYearTextBox.Name = "coinYearTextBox";
             coinYearTextBox.Size = new Size(168, 23);
             coinYearTextBox.TabIndex = 2;
             // 
-            // coinMaterialTextBox
-            // 
-            coinMaterialTextBox.Location = new Point(134, 131);
-            coinMaterialTextBox.Name = "coinMaterialTextBox";
-            coinMaterialTextBox.Size = new Size(168, 23);
-            coinMaterialTextBox.TabIndex = 3;
-            // 
             // coinPriceTextBox
             // 
-            coinPriceTextBox.Location = new Point(134, 169);
+            coinPriceTextBox.Location = new Point(144, 169);
             coinPriceTextBox.Name = "coinPriceTextBox";
             coinPriceTextBox.Size = new Size(168, 23);
             coinPriceTextBox.TabIndex = 4;
             // 
             // coinAvaiableCountTextBox
             // 
-            coinAvaiableCountTextBox.Location = new Point(134, 207);
+            coinAvaiableCountTextBox.Location = new Point(144, 207);
             coinAvaiableCountTextBox.Name = "coinAvaiableCountTextBox";
             coinAvaiableCountTextBox.Size = new Size(168, 23);
             coinAvaiableCountTextBox.TabIndex = 5;
             // 
-            // coinCountryTextBox
-            // 
-            coinCountryTextBox.Location = new Point(134, 245);
-            coinCountryTextBox.Name = "coinCountryTextBox";
-            coinCountryTextBox.Size = new Size(168, 23);
-            coinCountryTextBox.TabIndex = 6;
-            // 
             // coinIdTextBox
             // 
+            coinIdTextBox.Cursor = Cursors.No;
             coinIdTextBox.HideSelection = false;
-            coinIdTextBox.Location = new Point(134, 16);
+            coinIdTextBox.Location = new Point(144, 16);
             coinIdTextBox.Name = "coinIdTextBox";
             coinIdTextBox.ReadOnly = true;
             coinIdTextBox.Size = new Size(47, 23);
@@ -112,7 +99,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 19);
+            label1.Location = new Point(54, 19);
             label1.Name = "label1";
             label1.Size = new Size(84, 15);
             label1.TabIndex = 8;
@@ -121,7 +108,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(89, 57);
+            label2.Location = new Point(99, 57);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 9;
@@ -130,7 +117,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(58, 95);
+            label3.Location = new Point(68, 95);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 10;
@@ -139,7 +126,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 134);
+            label4.Location = new Point(80, 134);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 11;
@@ -148,25 +135,25 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(96, 172);
+            label5.Location = new Point(81, 172);
             label5.Name = "label5";
-            label5.Size = new Size(32, 15);
+            label5.Size = new Size(57, 15);
             label5.TabIndex = 12;
-            label5.Text = "Ціна";
+            label5.Text = "Ціна, грн";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(18, 210);
+            label6.Location = new Point(6, 210);
             label6.Name = "label6";
-            label6.Size = new Size(110, 15);
+            label6.Size = new Size(132, 15);
             label6.TabIndex = 13;
-            label6.Text = "Доступна кількість";
+            label6.Text = "Доступна кількість, шт";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(85, 248);
+            label7.Location = new Point(95, 248);
             label7.Name = "label7";
             label7.Size = new Size(43, 15);
             label7.TabIndex = 14;
@@ -175,7 +162,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(73, 286);
+            label8.Location = new Point(83, 286);
             label8.Name = "label8";
             label8.Size = new Size(55, 15);
             label8.TabIndex = 18;
@@ -183,7 +170,7 @@
             // 
             // coinDenominationTextBox
             // 
-            coinDenominationTextBox.Location = new Point(134, 283);
+            coinDenominationTextBox.Location = new Point(144, 283);
             coinDenominationTextBox.Name = "coinDenominationTextBox";
             coinDenominationTextBox.Size = new Size(168, 23);
             coinDenominationTextBox.TabIndex = 16;
@@ -191,31 +178,24 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(91, 362);
+            label9.Location = new Point(101, 362);
             label9.Name = "label9";
             label9.Size = new Size(37, 15);
             label9.TabIndex = 24;
             label9.Text = "Серія";
             // 
-            // coinSeriesTextBox
-            // 
-            coinSeriesTextBox.Location = new Point(134, 359);
-            coinSeriesTextBox.Name = "coinSeriesTextBox";
-            coinSeriesTextBox.Size = new Size(168, 23);
-            coinSeriesTextBox.TabIndex = 23;
-            // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(77, 324);
+            label10.Location = new Point(63, 324);
             label10.Name = "label10";
-            label10.Size = new Size(51, 15);
+            label10.Size = new Size(75, 15);
             label10.TabIndex = 22;
-            label10.Text = "Діаметр";
+            label10.Text = "Діаметр, мм";
             // 
             // coinDiametrTextBox
             // 
-            coinDiametrTextBox.Location = new Point(134, 321);
+            coinDiametrTextBox.Location = new Point(144, 321);
             coinDiametrTextBox.Name = "coinDiametrTextBox";
             coinDiametrTextBox.Size = new Size(168, 23);
             coinDiametrTextBox.TabIndex = 20;
@@ -223,7 +203,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(92, 416);
+            label11.Location = new Point(102, 416);
             label11.Name = "label11";
             label11.Size = new Size(36, 15);
             label11.TabIndex = 28;
@@ -273,11 +253,41 @@
             // 
             // coinDescriptionTextBox
             // 
-            coinDescriptionTextBox.Location = new Point(134, 397);
+            coinDescriptionTextBox.Location = new Point(144, 397);
             coinDescriptionTextBox.Name = "coinDescriptionTextBox";
-            coinDescriptionTextBox.Size = new Size(474, 63);
+            coinDescriptionTextBox.Size = new Size(464, 63);
             coinDescriptionTextBox.TabIndex = 33;
             coinDescriptionTextBox.Text = "";
+            // 
+            // coinMaterialComboBox
+            // 
+            coinMaterialComboBox.DropDownHeight = 150;
+            coinMaterialComboBox.FormattingEnabled = true;
+            coinMaterialComboBox.IntegralHeight = false;
+            coinMaterialComboBox.Location = new Point(144, 131);
+            coinMaterialComboBox.MaxDropDownItems = 10;
+            coinMaterialComboBox.Name = "coinMaterialComboBox";
+            coinMaterialComboBox.Size = new Size(168, 23);
+            coinMaterialComboBox.TabIndex = 34;
+            // 
+            // coinCountryComboBox
+            // 
+            coinCountryComboBox.DropDownHeight = 150;
+            coinCountryComboBox.FormattingEnabled = true;
+            coinCountryComboBox.IntegralHeight = false;
+            coinCountryComboBox.Location = new Point(144, 245);
+            coinCountryComboBox.MaxDropDownItems = 10;
+            coinCountryComboBox.Name = "coinCountryComboBox";
+            coinCountryComboBox.Size = new Size(168, 23);
+            coinCountryComboBox.TabIndex = 35;
+            // 
+            // coinSeriesComboBox
+            // 
+            coinSeriesComboBox.FormattingEnabled = true;
+            coinSeriesComboBox.Location = new Point(144, 359);
+            coinSeriesComboBox.Name = "coinSeriesComboBox";
+            coinSeriesComboBox.Size = new Size(168, 23);
+            coinSeriesComboBox.TabIndex = 36;
             // 
             // EditCoinForm
             // 
@@ -289,7 +299,6 @@
             Controls.Add(panel1);
             Controls.Add(label11);
             Controls.Add(label9);
-            Controls.Add(coinSeriesTextBox);
             Controls.Add(label10);
             Controls.Add(coinDiametrTextBox);
             Controls.Add(label8);
@@ -302,12 +311,13 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(coinIdTextBox);
-            Controls.Add(coinCountryTextBox);
             Controls.Add(coinAvaiableCountTextBox);
             Controls.Add(coinPriceTextBox);
-            Controls.Add(coinMaterialTextBox);
             Controls.Add(coinYearTextBox);
             Controls.Add(coinNameTextBox);
+            Controls.Add(coinMaterialComboBox);
+            Controls.Add(coinCountryComboBox);
+            Controls.Add(coinSeriesComboBox);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "EditCoinForm";
@@ -321,10 +331,8 @@
         #endregion
         private TextBox coinNameTextBox;
         private TextBox coinYearTextBox;
-        private TextBox coinMaterialTextBox;
         private TextBox coinPriceTextBox;
         private TextBox coinAvaiableCountTextBox;
-        private TextBox coinCountryTextBox;
         private TextBox coinIdTextBox;
         private Label label1;
         private Label label2;
@@ -336,7 +344,6 @@
         private Label label8;
         private TextBox coinDenominationTextBox;
         private Label label9;
-        private TextBox coinSeriesTextBox;
         private Label label10;
         private TextBox coinDiametrTextBox;
         private Label label11;
@@ -345,5 +352,8 @@
         private Panel panel1;
         private Button saveChangesButton;
         private RichTextBox coinDescriptionTextBox;
+        private ComboBox coinMaterialComboBox;
+        private ComboBox coinCountryComboBox;
+        private ComboBox coinSeriesComboBox;
     }
 }

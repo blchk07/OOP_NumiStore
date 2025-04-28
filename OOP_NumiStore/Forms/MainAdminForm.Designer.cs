@@ -34,9 +34,16 @@ namespace OOP_NumiStore.Forms
             coinListBlockPanel = new Panel();
             headerListCoinLabel = new Label();
             searchBlockPanel = new Panel();
+            button1 = new Button();
+            label12 = new Label();
+            textBox7 = new TextBox();
+            label13 = new Label();
+            label14 = new Label();
+            textBox8 = new TextBox();
+            label11 = new Label();
+            comboBox2 = new ComboBox();
             label10 = new Label();
             label9 = new Label();
-            textBox6 = new TextBox();
             label6 = new Label();
             textBox4 = new TextBox();
             label7 = new Label();
@@ -51,14 +58,7 @@ namespace OOP_NumiStore.Forms
             textBox1 = new TextBox();
             label1 = new Label();
             comboBox1 = new ComboBox();
-            label11 = new Label();
-            comboBox2 = new ComboBox();
-            label12 = new Label();
-            textBox7 = new TextBox();
-            label13 = new Label();
-            label14 = new Label();
-            textBox8 = new TextBox();
-            button1 = new Button();
+            comboBox3 = new ComboBox();
             coinListBlockPanel.SuspendLayout();
             searchBlockPanel.SuspendLayout();
             SuspendLayout();
@@ -76,7 +76,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinListBlockPanel
             // 
-            coinListBlockPanel.BackColor = Color.FromArgb(224, 224, 224);
+            coinListBlockPanel.BackColor = Color.FromArgb(226, 226, 226);
             coinListBlockPanel.Controls.Add(headerListCoinLabel);
             coinListBlockPanel.Controls.Add(flowLayoutPanel1);
             coinListBlockPanel.Location = new Point(244, 0);
@@ -106,7 +106,6 @@ namespace OOP_NumiStore.Forms
             searchBlockPanel.Controls.Add(comboBox2);
             searchBlockPanel.Controls.Add(label10);
             searchBlockPanel.Controls.Add(label9);
-            searchBlockPanel.Controls.Add(textBox6);
             searchBlockPanel.Controls.Add(label6);
             searchBlockPanel.Controls.Add(textBox4);
             searchBlockPanel.Controls.Add(label7);
@@ -121,10 +120,84 @@ namespace OOP_NumiStore.Forms
             searchBlockPanel.Controls.Add(textBox1);
             searchBlockPanel.Controls.Add(label1);
             searchBlockPanel.Controls.Add(comboBox1);
+            searchBlockPanel.Controls.Add(comboBox3);
             searchBlockPanel.Location = new Point(0, 0);
             searchBlockPanel.Name = "searchBlockPanel";
             searchBlockPanel.Size = new Size(241, 515);
             searchBlockPanel.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            button1.Location = new Point(33, 451);
+            button1.Name = "button1";
+            button1.Size = new Size(175, 41);
+            button1.TabIndex = 27;
+            button1.Text = "Пошук";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(125, 394);
+            label12.Name = "label12";
+            label12.Size = new Size(20, 15);
+            label12.TabIndex = 26;
+            label12.Text = "до";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(153, 391);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(55, 23);
+            textBox7.TabIndex = 25;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(33, 394);
+            label13.Name = "label13";
+            label13.Size = new Size(22, 15);
+            label13.TabIndex = 24;
+            label13.Text = "від";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label14.Location = new Point(33, 373);
+            label14.Name = "label14";
+            label14.Size = new Size(52, 15);
+            label14.TabIndex = 23;
+            label14.Text = "Діаметр";
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(61, 391);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(55, 23);
+            textBox8.TabIndex = 22;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label11.Location = new Point(33, 320);
+            label11.Name = "label11";
+            label11.Size = new Size(36, 15);
+            label11.TabIndex = 20;
+            label11.Text = "Серія";
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownHeight = 90;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.IntegralHeight = false;
+            comboBox2.Location = new Point(33, 338);
+            comboBox2.MaxDropDownItems = 6;
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(175, 23);
+            comboBox2.TabIndex = 21;
             // 
             // label10
             // 
@@ -145,13 +218,6 @@ namespace OOP_NumiStore.Forms
             label9.Size = new Size(43, 15);
             label9.TabIndex = 16;
             label9.Text = "Країна";
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(33, 230);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(175, 23);
-            textBox6.TabIndex = 15;
             // 
             // label6
             // 
@@ -266,80 +332,29 @@ namespace OOP_NumiStore.Forms
             // 
             // comboBox1
             // 
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox1.DropDownHeight = 150;
             comboBox1.FormattingEnabled = true;
+            comboBox1.IntegralHeight = false;
             comboBox1.Location = new Point(33, 283);
+            comboBox1.MaxDropDownItems = 10;
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(175, 23);
             comboBox1.TabIndex = 19;
             // 
-            // label11
+            // comboBox3
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label11.Location = new Point(33, 320);
-            label11.Name = "label11";
-            label11.Size = new Size(36, 15);
-            label11.TabIndex = 20;
-            label11.Text = "Серія";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(33, 338);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(175, 23);
-            comboBox2.TabIndex = 21;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(125, 394);
-            label12.Name = "label12";
-            label12.Size = new Size(20, 15);
-            label12.TabIndex = 26;
-            label12.Text = "до";
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(153, 391);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(55, 23);
-            textBox7.TabIndex = 25;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(33, 394);
-            label13.Name = "label13";
-            label13.Size = new Size(22, 15);
-            label13.TabIndex = 24;
-            label13.Text = "від";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label14.Location = new Point(33, 373);
-            label14.Name = "label14";
-            label14.Size = new Size(52, 15);
-            label14.TabIndex = 23;
-            label14.Text = "Діаметр";
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(61, 391);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(55, 23);
-            textBox8.TabIndex = 22;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(33, 451);
-            button1.Name = "button1";
-            button1.Size = new Size(175, 41);
-            button1.TabIndex = 27;
-            button1.Text = "Пошук";
-            button1.UseVisualStyleBackColor = true;
+            comboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox3.DropDownHeight = 150;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.IntegralHeight = false;
+            comboBox3.Location = new Point(33, 230);
+            comboBox3.MaxDropDownItems = 10;
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(175, 23);
+            comboBox3.TabIndex = 28;
             // 
             // MainAdminForm
             // 
@@ -379,7 +394,6 @@ namespace OOP_NumiStore.Forms
         protected TextBox textBox5;
         private Label label10;
         private Label label9;
-        protected TextBox textBox6;
         private ComboBox comboBox1;
         private Label label11;
         private ComboBox comboBox2;
@@ -389,5 +403,6 @@ namespace OOP_NumiStore.Forms
         private Label label14;
         protected TextBox textBox8;
         private Button button1;
+        private ComboBox comboBox3;
     }
 }

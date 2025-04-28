@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using OOP_NumiStore.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_NumiStore.Forms
 {
@@ -78,19 +79,23 @@ namespace OOP_NumiStore.Forms
             CoinList.AddCoin(coin2);
             CoinList.AddCoin(coin3);
             CoinList.AddCoin(coin4);
-            loadCoins(flowLayoutPanel1, CoinList);
+
+            comboBox3.Items.AddRange(CoinSettings.coinCountries.ToArray());
+            comboBox1.Items.AddRange(CoinSettings.coinMaterials.ToArray());
+
+            loadCoins();
         }
 
-        private void loadCoins(FlowLayoutPanel currentFlowLayoutPanel, CoinsList currentCoinCollection)
+        private void loadCoins()
         {
-            currentFlowLayoutPanel.Controls.Clear();
+            flowLayoutPanel1.Controls.Clear();
 
-            foreach (Coin coin in currentCoinCollection.Coins)
+            foreach (Coin coin in CoinList.Coins)
             {
                 BaseCoinBox adminListCoin = new BaseCoinBox(currentUser)
                 {
                     Coin = coin,
-                    Width = currentFlowLayoutPanel.Width - 20,
+                    Width = flowLayoutPanel1.Width - 20,
                     CoinTitle = coin.Name,
                     YearCoin = Convert.ToString(coin.Year),
                     CountryCoin = coin.Country,
@@ -98,7 +103,7 @@ namespace OOP_NumiStore.Forms
                     CoinImage = coin.Image,
                 };
                 //
-                currentFlowLayoutPanel.Controls.Add(adminListCoin);
+                flowLayoutPanel1.Controls.Add(adminListCoin);
             }
         }
 
