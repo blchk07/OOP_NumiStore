@@ -38,7 +38,7 @@
             surnameTextBox = new TextBox();
             nameTextBox = new TextBox();
             passwordLabel = new Label();
-            label1 = new Label();
+            loginTextLabel = new Label();
             loginLabel = new Label();
             headName = new Label();
             passwordTextBox = new TextBox();
@@ -59,7 +59,7 @@
             panel1.Controls.Add(surnameTextBox);
             panel1.Controls.Add(nameTextBox);
             panel1.Controls.Add(passwordLabel);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(loginTextLabel);
             panel1.Controls.Add(loginLabel);
             panel1.Controls.Add(headName);
             panel1.Controls.Add(passwordTextBox);
@@ -149,16 +149,17 @@
             passwordLabel.TabIndex = 14;
             passwordLabel.Text = "Пароль";
             // 
-            // label1
+            // loginTextLabel
             // 
-            label1.AutoSize = true;
-            label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(280, 399);
-            label1.Name = "label1";
-            label1.Size = new Size(97, 15);
-            label1.TabIndex = 6;
-            label1.Text = "Авторизуватися";
+            loginTextLabel.AutoSize = true;
+            loginTextLabel.Cursor = Cursors.Hand;
+            loginTextLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            loginTextLabel.Location = new Point(280, 399);
+            loginTextLabel.Name = "loginTextLabel";
+            loginTextLabel.Size = new Size(97, 15);
+            loginTextLabel.TabIndex = 6;
+            loginTextLabel.Text = "Авторизуватися";
+            loginTextLabel.Click += loginTextLabel_Click;
             // 
             // loginLabel
             // 
@@ -225,7 +226,7 @@
         #endregion
 
         private Panel panel1;
-        private Label label1;
+        private Label loginTextLabel;
         private Label headName;
         private Button registrationButton;
         private Label passwordLabel;

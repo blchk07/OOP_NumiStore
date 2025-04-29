@@ -71,5 +71,12 @@ namespace OOP_NumiStore.Forms
         {
             Application.Exit();
         }
+
+        private void loginTextLabel_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
+        }
     }
 }

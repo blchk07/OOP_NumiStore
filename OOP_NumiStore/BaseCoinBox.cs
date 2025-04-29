@@ -73,7 +73,11 @@ namespace OOP_NumiStore
         {
             EditCoinForm modalForm = new(Coin);
             modalForm.ShowDialog();
-            if (modalForm.isSaved && MainAdminForm != null) MainAdminForm.loadCoins();
+            if (modalForm.isSaved && MainAdminForm != null)
+            {
+                MainAdminForm.loadCoins();
+                MainAdminForm.updateSearchAndFilterBlock();
+            }
         }
     }
 }

@@ -50,6 +50,7 @@
             coinTitle.AutoSize = true;
             coinTitle.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             coinTitle.Location = new Point(136, 11);
+            coinTitle.Margin = new Padding(0);
             coinTitle.Name = "coinTitle";
             coinTitle.Size = new Size(56, 30);
             coinTitle.TabIndex = 0;
@@ -58,7 +59,7 @@
             // priceCoinText
             // 
             priceCoinText.AutoSize = true;
-            priceCoinText.Location = new Point(136, 88);
+            priceCoinText.Location = new Point(136, 87);
             priceCoinText.Name = "priceCoinText";
             priceCoinText.Size = new Size(35, 15);
             priceCoinText.TabIndex = 1;
@@ -99,7 +100,7 @@
             // countryCoinText
             // 
             countryCoinText.AutoSize = true;
-            countryCoinText.Location = new Point(136, 64);
+            countryCoinText.Location = new Point(136, 66);
             countryCoinText.Name = "countryCoinText";
             countryCoinText.Size = new Size(46, 15);
             countryCoinText.TabIndex = 5;

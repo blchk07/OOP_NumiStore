@@ -34,31 +34,31 @@ namespace OOP_NumiStore.Forms
             coinListBlockPanel = new Panel();
             headerListCoinLabel = new Label();
             searchBlockPanel = new Panel();
-            button1 = new Button();
+            applySearchButton = new Button();
             label12 = new Label();
-            textBox7 = new TextBox();
+            coinDiameterToTextBox = new TextBox();
             label13 = new Label();
-            label14 = new Label();
-            textBox8 = new TextBox();
-            label11 = new Label();
-            comboBox2 = new ComboBox();
-            label10 = new Label();
-            label9 = new Label();
+            coinDiameterLabel = new Label();
+            coinDiameterFromTextBox = new TextBox();
+            coinSeriesLabel = new Label();
+            coinSeriesComboBox = new ComboBox();
+            coinMaterialLabel = new Label();
+            coinCountryLabel = new Label();
             label6 = new Label();
-            textBox4 = new TextBox();
+            coinYearToTextBox = new TextBox();
             label7 = new Label();
-            label8 = new Label();
-            textBox5 = new TextBox();
+            coinYearLabel = new Label();
+            coinYearFromTextBox = new TextBox();
             label5 = new Label();
-            textBox3 = new TextBox();
+            coinPriceToTextBox = new TextBox();
             label4 = new Label();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
+            coinPriceLabel = new Label();
+            coinPriceFromTextBox = new TextBox();
+            coinNameLabel = new Label();
+            coinNameTextBox = new TextBox();
             label1 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox3 = new ComboBox();
+            coinCountryComboBox = new ComboBox();
+            coinMaterialsCheckedListBox = new CheckedListBox();
             coinListBlockPanel.SuspendLayout();
             searchBlockPanel.SuspendLayout();
             SuspendLayout();
@@ -96,265 +96,262 @@ namespace OOP_NumiStore.Forms
             // 
             // searchBlockPanel
             // 
-            searchBlockPanel.Controls.Add(button1);
+            searchBlockPanel.Controls.Add(applySearchButton);
             searchBlockPanel.Controls.Add(label12);
-            searchBlockPanel.Controls.Add(textBox7);
+            searchBlockPanel.Controls.Add(coinDiameterToTextBox);
             searchBlockPanel.Controls.Add(label13);
-            searchBlockPanel.Controls.Add(label14);
-            searchBlockPanel.Controls.Add(textBox8);
-            searchBlockPanel.Controls.Add(label11);
-            searchBlockPanel.Controls.Add(comboBox2);
-            searchBlockPanel.Controls.Add(label10);
-            searchBlockPanel.Controls.Add(label9);
+            searchBlockPanel.Controls.Add(coinDiameterLabel);
+            searchBlockPanel.Controls.Add(coinDiameterFromTextBox);
+            searchBlockPanel.Controls.Add(coinSeriesLabel);
+            searchBlockPanel.Controls.Add(coinSeriesComboBox);
+            searchBlockPanel.Controls.Add(coinMaterialLabel);
+            searchBlockPanel.Controls.Add(coinCountryLabel);
             searchBlockPanel.Controls.Add(label6);
-            searchBlockPanel.Controls.Add(textBox4);
+            searchBlockPanel.Controls.Add(coinYearToTextBox);
             searchBlockPanel.Controls.Add(label7);
-            searchBlockPanel.Controls.Add(label8);
-            searchBlockPanel.Controls.Add(textBox5);
+            searchBlockPanel.Controls.Add(coinYearLabel);
+            searchBlockPanel.Controls.Add(coinYearFromTextBox);
             searchBlockPanel.Controls.Add(label5);
-            searchBlockPanel.Controls.Add(textBox3);
+            searchBlockPanel.Controls.Add(coinPriceToTextBox);
             searchBlockPanel.Controls.Add(label4);
-            searchBlockPanel.Controls.Add(label3);
-            searchBlockPanel.Controls.Add(textBox2);
-            searchBlockPanel.Controls.Add(label2);
-            searchBlockPanel.Controls.Add(textBox1);
+            searchBlockPanel.Controls.Add(coinPriceLabel);
+            searchBlockPanel.Controls.Add(coinPriceFromTextBox);
+            searchBlockPanel.Controls.Add(coinNameLabel);
+            searchBlockPanel.Controls.Add(coinNameTextBox);
             searchBlockPanel.Controls.Add(label1);
-            searchBlockPanel.Controls.Add(comboBox1);
-            searchBlockPanel.Controls.Add(comboBox3);
+            searchBlockPanel.Controls.Add(coinCountryComboBox);
+            searchBlockPanel.Controls.Add(coinMaterialsCheckedListBox);
             searchBlockPanel.Location = new Point(0, 0);
             searchBlockPanel.Name = "searchBlockPanel";
             searchBlockPanel.Size = new Size(241, 515);
             searchBlockPanel.TabIndex = 2;
             // 
-            // button1
+            // applySearchButton
             // 
-            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button1.Location = new Point(33, 451);
-            button1.Name = "button1";
-            button1.Size = new Size(175, 41);
-            button1.TabIndex = 27;
-            button1.Text = "Пошук";
-            button1.UseVisualStyleBackColor = true;
+            applySearchButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            applySearchButton.Location = new Point(31, 464);
+            applySearchButton.Name = "applySearchButton";
+            applySearchButton.Size = new Size(175, 41);
+            applySearchButton.TabIndex = 27;
+            applySearchButton.Text = "Пошук";
+            applySearchButton.UseVisualStyleBackColor = true;
+            applySearchButton.Click += applySearchButton_Click;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(125, 394);
+            label12.Location = new Point(123, 432);
             label12.Name = "label12";
             label12.Size = new Size(20, 15);
             label12.TabIndex = 26;
             label12.Text = "до";
             // 
-            // textBox7
+            // coinDiameterToTextBox
             // 
-            textBox7.Location = new Point(153, 391);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(55, 23);
-            textBox7.TabIndex = 25;
+            coinDiameterToTextBox.Location = new Point(151, 429);
+            coinDiameterToTextBox.Name = "coinDiameterToTextBox";
+            coinDiameterToTextBox.Size = new Size(55, 23);
+            coinDiameterToTextBox.TabIndex = 25;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(33, 394);
+            label13.Location = new Point(31, 432);
             label13.Name = "label13";
             label13.Size = new Size(22, 15);
             label13.TabIndex = 24;
             label13.Text = "від";
             // 
-            // label14
+            // coinDiameterLabel
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label14.Location = new Point(33, 373);
-            label14.Name = "label14";
-            label14.Size = new Size(52, 15);
-            label14.TabIndex = 23;
-            label14.Text = "Діаметр";
+            coinDiameterLabel.AutoSize = true;
+            coinDiameterLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinDiameterLabel.Location = new Point(31, 411);
+            coinDiameterLabel.Name = "coinDiameterLabel";
+            coinDiameterLabel.Size = new Size(52, 15);
+            coinDiameterLabel.TabIndex = 23;
+            coinDiameterLabel.Text = "Діаметр";
             // 
-            // textBox8
+            // coinDiameterFromTextBox
             // 
-            textBox8.Location = new Point(61, 391);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(55, 23);
-            textBox8.TabIndex = 22;
+            coinDiameterFromTextBox.Location = new Point(59, 429);
+            coinDiameterFromTextBox.Name = "coinDiameterFromTextBox";
+            coinDiameterFromTextBox.Size = new Size(55, 23);
+            coinDiameterFromTextBox.TabIndex = 22;
             // 
-            // label11
+            // coinSeriesLabel
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label11.Location = new Point(33, 320);
-            label11.Name = "label11";
-            label11.Size = new Size(36, 15);
-            label11.TabIndex = 20;
-            label11.Text = "Серія";
+            coinSeriesLabel.AutoSize = true;
+            coinSeriesLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinSeriesLabel.Location = new Point(31, 358);
+            coinSeriesLabel.Name = "coinSeriesLabel";
+            coinSeriesLabel.Size = new Size(36, 15);
+            coinSeriesLabel.TabIndex = 20;
+            coinSeriesLabel.Text = "Серія";
             // 
-            // comboBox2
+            // coinSeriesComboBox
             // 
-            comboBox2.DropDownHeight = 90;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.IntegralHeight = false;
-            comboBox2.Location = new Point(33, 338);
-            comboBox2.MaxDropDownItems = 6;
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(175, 23);
-            comboBox2.TabIndex = 21;
+            coinSeriesComboBox.DropDownHeight = 90;
+            coinSeriesComboBox.FormattingEnabled = true;
+            coinSeriesComboBox.IntegralHeight = false;
+            coinSeriesComboBox.Location = new Point(31, 376);
+            coinSeriesComboBox.MaxDropDownItems = 6;
+            coinSeriesComboBox.Name = "coinSeriesComboBox";
+            coinSeriesComboBox.Size = new Size(175, 23);
+            coinSeriesComboBox.TabIndex = 21;
             // 
-            // label10
+            // coinMaterialLabel
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label10.Location = new Point(33, 265);
-            label10.Name = "label10";
-            label10.Size = new Size(58, 15);
-            label10.TabIndex = 18;
-            label10.Text = "Матеріал";
+            coinMaterialLabel.AutoSize = true;
+            coinMaterialLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinMaterialLabel.Location = new Point(31, 256);
+            coinMaterialLabel.Name = "coinMaterialLabel";
+            coinMaterialLabel.Size = new Size(58, 15);
+            coinMaterialLabel.TabIndex = 18;
+            coinMaterialLabel.Text = "Матеріал";
             // 
-            // label9
+            // coinCountryLabel
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label9.Location = new Point(33, 212);
-            label9.Name = "label9";
-            label9.Size = new Size(43, 15);
-            label9.TabIndex = 16;
-            label9.Text = "Країна";
+            coinCountryLabel.AutoSize = true;
+            coinCountryLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinCountryLabel.Location = new Point(31, 203);
+            coinCountryLabel.Name = "coinCountryLabel";
+            coinCountryLabel.Size = new Size(43, 15);
+            coinCountryLabel.TabIndex = 16;
+            coinCountryLabel.Text = "Країна";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(125, 179);
+            label6.Location = new Point(123, 170);
             label6.Name = "label6";
             label6.Size = new Size(20, 15);
             label6.TabIndex = 14;
             label6.Text = "до";
             // 
-            // textBox4
+            // coinYearToTextBox
             // 
-            textBox4.Location = new Point(153, 176);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(55, 23);
-            textBox4.TabIndex = 13;
+            coinYearToTextBox.Location = new Point(151, 167);
+            coinYearToTextBox.Name = "coinYearToTextBox";
+            coinYearToTextBox.Size = new Size(55, 23);
+            coinYearToTextBox.TabIndex = 13;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(33, 179);
+            label7.Location = new Point(31, 170);
             label7.Name = "label7";
             label7.Size = new Size(22, 15);
             label7.TabIndex = 12;
             label7.Text = "від";
             // 
-            // label8
+            // coinYearLabel
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label8.Location = new Point(33, 158);
-            label8.Name = "label8";
-            label8.Size = new Size(71, 15);
-            label8.TabIndex = 11;
-            label8.Text = "Рік випуску";
+            coinYearLabel.AutoSize = true;
+            coinYearLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinYearLabel.Location = new Point(31, 149);
+            coinYearLabel.Name = "coinYearLabel";
+            coinYearLabel.Size = new Size(71, 15);
+            coinYearLabel.TabIndex = 11;
+            coinYearLabel.Text = "Рік випуску";
             // 
-            // textBox5
+            // coinYearFromTextBox
             // 
-            textBox5.Location = new Point(61, 176);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(55, 23);
-            textBox5.TabIndex = 10;
+            coinYearFromTextBox.Location = new Point(59, 167);
+            coinYearFromTextBox.Name = "coinYearFromTextBox";
+            coinYearFromTextBox.Size = new Size(55, 23);
+            coinYearFromTextBox.TabIndex = 10;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(125, 126);
+            label5.Location = new Point(123, 117);
             label5.Name = "label5";
             label5.Size = new Size(20, 15);
             label5.TabIndex = 9;
             label5.Text = "до";
             // 
-            // textBox3
+            // coinPriceToTextBox
             // 
-            textBox3.Location = new Point(153, 123);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(55, 23);
-            textBox3.TabIndex = 8;
+            coinPriceToTextBox.Location = new Point(151, 114);
+            coinPriceToTextBox.Name = "coinPriceToTextBox";
+            coinPriceToTextBox.Size = new Size(55, 23);
+            coinPriceToTextBox.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(33, 126);
+            label4.Location = new Point(31, 117);
             label4.Name = "label4";
             label4.Size = new Size(22, 15);
             label4.TabIndex = 7;
             label4.Text = "від";
             // 
-            // label3
+            // coinPriceLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label3.Location = new Point(33, 105);
-            label3.Name = "label3";
-            label3.Size = new Size(32, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Ціна";
+            coinPriceLabel.AutoSize = true;
+            coinPriceLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinPriceLabel.Location = new Point(31, 96);
+            coinPriceLabel.Name = "coinPriceLabel";
+            coinPriceLabel.Size = new Size(32, 15);
+            coinPriceLabel.TabIndex = 6;
+            coinPriceLabel.Text = "Ціна";
             // 
-            // textBox2
+            // coinPriceFromTextBox
             // 
-            textBox2.Location = new Point(61, 123);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(55, 23);
-            textBox2.TabIndex = 5;
+            coinPriceFromTextBox.Location = new Point(59, 114);
+            coinPriceFromTextBox.Name = "coinPriceFromTextBox";
+            coinPriceFromTextBox.Size = new Size(55, 23);
+            coinPriceFromTextBox.TabIndex = 5;
             // 
-            // label2
+            // coinNameLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.Location = new Point(33, 52);
-            label2.Name = "label2";
-            label2.Size = new Size(85, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Назва монети";
+            coinNameLabel.AutoSize = true;
+            coinNameLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinNameLabel.Location = new Point(31, 43);
+            coinNameLabel.Name = "coinNameLabel";
+            coinNameLabel.Size = new Size(85, 15);
+            coinNameLabel.TabIndex = 4;
+            coinNameLabel.Text = "Назва монети";
             // 
-            // textBox1
+            // coinNameTextBox
             // 
-            textBox1.Location = new Point(33, 70);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(175, 23);
-            textBox1.TabIndex = 3;
+            coinNameTextBox.Location = new Point(31, 61);
+            coinNameTextBox.Name = "coinNameTextBox";
+            coinNameTextBox.Size = new Size(175, 23);
+            coinNameTextBox.TabIndex = 3;
+            coinNameTextBox.TextChanged += applySearchButton_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(35, 18);
+            label1.Location = new Point(33, 9);
             label1.Name = "label1";
             label1.Size = new Size(170, 25);
             label1.TabIndex = 2;
             label1.Text = "Пошук та фільтри";
             // 
-            // comboBox1
+            // coinCountryComboBox
             // 
-            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBox1.DropDownHeight = 150;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.IntegralHeight = false;
-            comboBox1.Location = new Point(33, 283);
-            comboBox1.MaxDropDownItems = 10;
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(175, 23);
-            comboBox1.TabIndex = 19;
+            coinCountryComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            coinCountryComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            coinCountryComboBox.DropDownHeight = 150;
+            coinCountryComboBox.FormattingEnabled = true;
+            coinCountryComboBox.IntegralHeight = false;
+            coinCountryComboBox.Location = new Point(31, 221);
+            coinCountryComboBox.MaxDropDownItems = 10;
+            coinCountryComboBox.Name = "coinCountryComboBox";
+            coinCountryComboBox.Size = new Size(175, 23);
+            coinCountryComboBox.TabIndex = 28;
             // 
-            // comboBox3
+            // coinMaterialsCheckedListBox
             // 
-            comboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboBox3.DropDownHeight = 150;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.IntegralHeight = false;
-            comboBox3.Location = new Point(33, 230);
-            comboBox3.MaxDropDownItems = 10;
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(175, 23);
-            comboBox3.TabIndex = 28;
+            coinMaterialsCheckedListBox.FormattingEnabled = true;
+            coinMaterialsCheckedListBox.Location = new Point(31, 275);
+            coinMaterialsCheckedListBox.Name = "coinMaterialsCheckedListBox";
+            coinMaterialsCheckedListBox.Size = new Size(175, 76);
+            coinMaterialsCheckedListBox.TabIndex = 29;
             // 
             // MainAdminForm
             // 
@@ -380,29 +377,30 @@ namespace OOP_NumiStore.Forms
         private Label headerListCoinLabel;
         private Panel searchBlockPanel;
         private Label label1;
-        protected TextBox textBox1;
-        private Label label2;
+        protected TextBox coinNameTextBox;
+        private Label coinNameLabel;
         private Label label5;
         private Label label4;
-        private Label label3;
-        protected TextBox textBox2;
-        protected TextBox textBox3;
+        private Label coinPriceLabel;
+        protected TextBox coinPriceFromTextBox;
+        protected TextBox coinPriceToTextBox;
         private Label label6;
-        protected TextBox textBox4;
+        protected TextBox coinYearToTextBox;
         private Label label7;
-        private Label label8;
-        protected TextBox textBox5;
-        private Label label10;
-        private Label label9;
+        private Label coinYearLabel;
+        protected TextBox coinYearFromTextBox;
+        private Label coinMaterialLabel;
+        private Label coinCountryLabel;
         private ComboBox comboBox1;
-        private Label label11;
-        private ComboBox comboBox2;
+        private Label coinSeriesLabel;
+        private ComboBox coinSeriesComboBox;
         private Label label12;
-        protected TextBox textBox7;
+        protected TextBox coinDiameterToTextBox;
         private Label label13;
-        private Label label14;
-        protected TextBox textBox8;
-        private Button button1;
-        private ComboBox comboBox3;
+        private Label coinDiameterLabel;
+        protected TextBox coinDiameterFromTextBox;
+        private Button applySearchButton;
+        private ComboBox coinCountryComboBox;
+        private CheckedListBox coinMaterialsCheckedListBox;
     }
 }
