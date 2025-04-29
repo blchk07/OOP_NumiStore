@@ -12,8 +12,8 @@ namespace OOP_NumiStore.Models
 {
     class UsersManager
     {
-        private readonly string adminPath;
-        private readonly string customerPath; 
+        private const string adminPath = @"json\admins.json";
+        private const string customerPath = @"json\customers.json"; 
         public List<Admin> Admins { get; private set; } = new List<Admin>();
         public List<Customer> Customers { get; private set; } = new List<Customer>();
 
@@ -25,11 +25,6 @@ namespace OOP_NumiStore.Models
 
         public UsersManager()
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
-            adminPath = Path.Combine(projectDirectory, "admins.json");
-            customerPath = Path.Combine(projectDirectory, "customers.json");
-
             ReadAdminsFromFile();
             ReadCustomersFromFile();
         }

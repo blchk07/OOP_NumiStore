@@ -116,6 +116,7 @@
             coinDeleteButton.TabIndex = 6;
             coinDeleteButton.Text = "Видалити";
             coinDeleteButton.UseVisualStyleBackColor = true;
+            coinDeleteButton.Click += coinDeleteButton_Click;
             // 
             // adminPanelButtons
             // 

@@ -75,8 +75,24 @@ namespace OOP_NumiStore
             modalForm.ShowDialog();
             if (modalForm.isSaved && MainAdminForm != null)
             {
+                MainAdminForm.CoinList.SaveCoinsToFile();
                 MainAdminForm.loadCoins();
                 MainAdminForm.updateSearchAndFilterBlock();
+            }
+        }
+
+        private void coinDeleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                if (MainAdminForm != null)
+                {
+                    MainAdminForm.CoinList.RemoveCoin(Coin);
+                    MainAdminForm.loadCoins();
+                    MainAdminForm.updateSearchAndFilterBlock();
+                }
             }
         }
     }
