@@ -100,10 +100,34 @@ namespace OOP_NumiStore.Forms
                     YearCoin = Convert.ToString(coin.Year),
                     CountryCoin = coin.Country,
                     PriceCoin = Convert.ToString(coin.Price),
-                    CoinImage = coin.Image,
-                    MainAdminForm = this,
+                    CoinImage = coin.Image
                 };
+                adminListCoin.EditCoinButtonClicked += CoinBox_EditButtonClicked;
+                adminListCoin.DeleteCoinButtonClicked += CoinBox_DeleteButtonClicked;
                 flowLayoutPanel1.Controls.Add(adminListCoin);
+            }
+        }
+
+        private void CoinBox_EditButtonClicked(object? sender, Coin coin)
+        {
+            EditCoinForm modalForm = new(coin);
+            modalForm.ShowDialog();
+            if (modalForm.isSaved)
+            {
+                CoinList.SaveCoinsToFile();
+                loadCoins();
+                updateSearchAndFilterBlock();
+            }
+        }
+
+        private void CoinBox_DeleteButtonClicked(object? sender, Coin coin)
+        {
+            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету \"{coin.Name}\"?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                CoinList.RemoveCoin(coin);
+                loadCoins();
+                updateSearchAndFilterBlock();
             }
         }
 

@@ -16,6 +16,8 @@ namespace OOP_NumiStore
 {
     public partial class BaseCoinBox : UserControl
     {
+        public event EventHandler<Coin> EditCoinButtonClicked;
+        public event EventHandler<Coin> DeleteCoinButtonClicked;
         public BaseCoinBox(User currentUser)
         {
             InitializeComponent();
@@ -27,7 +29,6 @@ namespace OOP_NumiStore
             customerPanelButtons.Visible = currentUser is Customer;
             adminPanelButtons.Visible = currentUser is Admin;
         }
-        public MainAdminForm? MainAdminForm { get; set; } = null;
 
         public Coin Coin { get; set; }
 
@@ -53,7 +54,6 @@ namespace OOP_NumiStore
         [Category("Custom Props")]
         public string PriceCoin
         {
-            //get { return priceCoinText.Text; }
             set { priceCoinText.Text = $"Ціна: {value} грн."; }
         }
         [Category("Custom Props")]
@@ -71,29 +71,12 @@ namespace OOP_NumiStore
 
         private void coinEditButton_Click(object sender, EventArgs e)
         {
-            EditCoinForm modalForm = new(Coin);
-            modalForm.ShowDialog();
-            if (modalForm.isSaved && MainAdminForm != null)
-            {
-                MainAdminForm.CoinList.SaveCoinsToFile();
-                MainAdminForm.loadCoins();
-                MainAdminForm.updateSearchAndFilterBlock();
-            }
+            EditCoinButtonClicked?.Invoke(this, Coin);
         }
 
         private void coinDeleteButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                if (MainAdminForm != null)
-                {
-                    MainAdminForm.CoinList.RemoveCoin(Coin);
-                    MainAdminForm.loadCoins();
-                    MainAdminForm.updateSearchAndFilterBlock();
-                }
-            }
+            DeleteCoinButtonClicked?.Invoke(this, Coin);
         }
     }
 }
