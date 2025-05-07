@@ -32,6 +32,8 @@ namespace OOP_NumiStore.Forms
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
             coinListBlockPanel = new Panel();
+            mainHeaderPanel = new Panel();
+            createNewCoinButton = new Button();
             headerListCoinLabel = new Label();
             searchBlockPanel = new Panel();
             applySearchButton = new Button();
@@ -60,6 +62,7 @@ namespace OOP_NumiStore.Forms
             coinCountryComboBox = new ComboBox();
             coinMaterialsCheckedListBox = new CheckedListBox();
             coinListBlockPanel.SuspendLayout();
+            mainHeaderPanel.SuspendLayout();
             searchBlockPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,18 +80,41 @@ namespace OOP_NumiStore.Forms
             // coinListBlockPanel
             // 
             coinListBlockPanel.BackColor = Color.FromArgb(226, 226, 226);
-            coinListBlockPanel.Controls.Add(headerListCoinLabel);
+            coinListBlockPanel.Controls.Add(mainHeaderPanel);
             coinListBlockPanel.Controls.Add(flowLayoutPanel1);
             coinListBlockPanel.Location = new Point(244, 0);
             coinListBlockPanel.Name = "coinListBlockPanel";
             coinListBlockPanel.Size = new Size(559, 515);
             coinListBlockPanel.TabIndex = 1;
             // 
+            // mainHeaderPanel
+            // 
+            mainHeaderPanel.BackColor = SystemColors.ControlLight;
+            mainHeaderPanel.Controls.Add(createNewCoinButton);
+            mainHeaderPanel.Controls.Add(headerListCoinLabel);
+            mainHeaderPanel.Location = new Point(0, 0);
+            mainHeaderPanel.Name = "mainHeaderPanel";
+            mainHeaderPanel.Size = new Size(559, 58);
+            mainHeaderPanel.TabIndex = 3;
+            // 
+            // createNewCoinButton
+            // 
+            createNewCoinButton.Cursor = Cursors.Hand;
+            createNewCoinButton.FlatStyle = FlatStyle.Popup;
+            createNewCoinButton.Location = new Point(446, 13);
+            createNewCoinButton.Margin = new Padding(3, 0, 3, 0);
+            createNewCoinButton.Name = "createNewCoinButton";
+            createNewCoinButton.Size = new Size(92, 32);
+            createNewCoinButton.TabIndex = 2;
+            createNewCoinButton.Text = "Нова монета";
+            createNewCoinButton.UseVisualStyleBackColor = true;
+            createNewCoinButton.Click += createNewCoinButton_Click;
+            // 
             // headerListCoinLabel
             // 
             headerListCoinLabel.AutoSize = true;
             headerListCoinLabel.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            headerListCoinLabel.Location = new Point(194, 12);
+            headerListCoinLabel.Location = new Point(194, 13);
             headerListCoinLabel.Name = "headerListCoinLabel";
             headerListCoinLabel.Size = new Size(171, 32);
             headerListCoinLabel.TabIndex = 1;
@@ -198,6 +224,7 @@ namespace OOP_NumiStore.Forms
             coinSeriesComboBox.MaxDropDownItems = 6;
             coinSeriesComboBox.Name = "coinSeriesComboBox";
             coinSeriesComboBox.Size = new Size(175, 23);
+            coinSeriesComboBox.Sorted = true;
             coinSeriesComboBox.TabIndex = 21;
             // 
             // coinMaterialLabel
@@ -343,6 +370,7 @@ namespace OOP_NumiStore.Forms
             coinCountryComboBox.MaxDropDownItems = 10;
             coinCountryComboBox.Name = "coinCountryComboBox";
             coinCountryComboBox.Size = new Size(175, 23);
+            coinCountryComboBox.Sorted = true;
             coinCountryComboBox.TabIndex = 28;
             // 
             // coinMaterialsCheckedListBox
@@ -351,6 +379,7 @@ namespace OOP_NumiStore.Forms
             coinMaterialsCheckedListBox.Location = new Point(31, 275);
             coinMaterialsCheckedListBox.Name = "coinMaterialsCheckedListBox";
             coinMaterialsCheckedListBox.Size = new Size(175, 76);
+            coinMaterialsCheckedListBox.Sorted = true;
             coinMaterialsCheckedListBox.TabIndex = 29;
             // 
             // MainAdminForm
@@ -364,7 +393,8 @@ namespace OOP_NumiStore.Forms
             Text = "Головна";
             FormClosed += MainForm_FormClosed;
             coinListBlockPanel.ResumeLayout(false);
-            coinListBlockPanel.PerformLayout();
+            mainHeaderPanel.ResumeLayout(false);
+            mainHeaderPanel.PerformLayout();
             searchBlockPanel.ResumeLayout(false);
             searchBlockPanel.PerformLayout();
             ResumeLayout(false);
@@ -402,5 +432,7 @@ namespace OOP_NumiStore.Forms
         private Button applySearchButton;
         private ComboBox coinCountryComboBox;
         private CheckedListBox coinMaterialsCheckedListBox;
+        private Button createNewCoinButton;
+        private Panel mainHeaderPanel;
     }
 }

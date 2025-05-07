@@ -196,55 +196,5 @@ namespace OOP_NumiStore.Models
                 MessageBox.Show($"Помилка під час збережння у файл. {path}:\n{ex.Message}", "Помилка збереження", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //public void GenerateTestDataForAdmin()
-        //{
-        //    //if (Admins != null)
-        //    //{
-        //    //    DialogResult result = MessageBox.Show(
-        //    //        "Файл адмінів містить дані. Ви впевнені що ви хочете перезаписати файл новими даними?",
-        //    //        "Підтвердження",
-        //    //        MessageBoxButtons.YesNo
-        //    //    );
-        //    //    if (result == DialogResult.No) return;
-        //    //}
-        //    for (int i = 1; i <= 5; i++)
-        //    {
-        //        AddAdmin(new()
-        //        {
-        //            Login = $"t{i}",
-        //            Password = $"q{i}",
-        //            Email = $"test.email{i}@gmail.com",
-        //            Name = $"TestName{i}",
-        //            Surname = $"TestSurname{i}"
-        //        });
-        //    }
-        //    SaveToFile(adminPath, Admins);
-        //}
-
-        //public void GenerateTestDataForCustomer()
-        //{
-        //    //if (Customers != null)
-        //    //{
-        //    //    DialogResult result = MessageBox.Show(
-        //    //        "Файл покупців містить дані. Ви впевнені що ви хочете перезаписати файл новими даними?",
-        //    //        "Підтвердження",
-        //    //        MessageBoxButtons.YesNo
-        //    //    );
-        //    //    if (result == DialogResult.No) return;
-        //    //}
-        //    for (int i = 6; i <= 10; i++)
-        //    {
-        //        AddCustomer(new()
-        //        {
-        //            Login = $"t{i}",
-        //            Password = $"q{i}",
-        //            Email = $"test.email{i}@gmail.com",
-        //            Name = $"TestName{i}",
-        //            Surname = $"TestSurname{i}"
-        //        });
-        //    }
-        //    SaveToFile(customerPath, Customers);
-        //}
     }
 }

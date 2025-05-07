@@ -223,7 +223,7 @@
             // 
             coinChangeButton.Anchor = AnchorStyles.None;
             coinChangeButton.Cursor = Cursors.Hand;
-            coinChangeButton.Location = new Point(50, 229);
+            coinChangeButton.Location = new Point(48, 229);
             coinChangeButton.Name = "coinChangeButton";
             coinChangeButton.Size = new Size(114, 23);
             coinChangeButton.TabIndex = 30;
@@ -237,7 +237,7 @@
             panel1.Controls.Add(coinChangeButton);
             panel1.Location = new Point(397, 16);
             panel1.Name = "panel1";
-            panel1.Size = new Size(211, 299);
+            panel1.Size = new Size(211, 265);
             panel1.TabIndex = 31;
             // 
             // saveChangesButton
@@ -268,6 +268,7 @@
             coinMaterialComboBox.MaxDropDownItems = 10;
             coinMaterialComboBox.Name = "coinMaterialComboBox";
             coinMaterialComboBox.Size = new Size(168, 23);
+            coinMaterialComboBox.Sorted = true;
             coinMaterialComboBox.TabIndex = 34;
             // 
             // coinCountryComboBox
@@ -279,6 +280,7 @@
             coinCountryComboBox.MaxDropDownItems = 10;
             coinCountryComboBox.Name = "coinCountryComboBox";
             coinCountryComboBox.Size = new Size(168, 23);
+            coinCountryComboBox.Sorted = true;
             coinCountryComboBox.TabIndex = 35;
             // 
             // coinSeriesComboBox
@@ -287,6 +289,7 @@
             coinSeriesComboBox.Location = new Point(144, 359);
             coinSeriesComboBox.Name = "coinSeriesComboBox";
             coinSeriesComboBox.Size = new Size(168, 23);
+            coinSeriesComboBox.Sorted = true;
             coinSeriesComboBox.TabIndex = 36;
             // 
             // EditCoinForm

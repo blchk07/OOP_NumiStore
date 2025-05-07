@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using OOP_NumiStore.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_NumiStore.Forms
 {
@@ -20,66 +19,8 @@ namespace OOP_NumiStore.Forms
 
         public MainAdminForm()
         {
-            InitializeComponent();
             currentUser = UserSession.currentUser;
-
-            //Coin coin1 = new Coin
-            //{
-            //    Name = "Києво-Печерська лавра",
-            //    Year = 1996,
-            //    Material = "золото",
-            //    Price = 500m,
-            //    AvailableCount = 450,
-            //    Country = "Україна",
-            //    Description = "Присвячена видатній архітектурно-історичній пам`ятці...",
-            //    Denomination = 200,
-            //    Diameter = 25.0,
-            //    Series = "Духовні скарби України",
-            //};
-            //Coin coin2 = new Coin
-            //{
-            //    Name = "Київська Русь",
-            //    Year = 1997,
-            //    Material = "срібло",
-            //    Price = 600m,
-            //    AvailableCount = 300,
-            //    Country = "Україна",
-            //    Description = "Присвячена історії Київської Русі...",
-            //    Denomination = 100,
-            //    Diameter = 30.0,
-            //    Series = "Історія України",
-            //};
-            //Coin coin3 = new Coin
-            //{
-            //    Name = "Золотий тризуб",
-            //    Year = 1998,
-            //    Material = "золото",
-            //    Price = 100000.00m,
-            //    AvailableCount = 200,
-            //    Country = "Україна",
-            //    Description = "Присвячена тризубу як символу...",
-            //    Denomination = 500,
-            //    Diameter = 40.0,
-            //    Series = "Національні символи України",
-            //};
-            //Coin coin4 = new Coin
-            //{
-            //    Name = "Київська Космічна ера",
-            //    Year = 1999,
-            //    Material = "срібло",
-            //    Price = 20000.00m,
-            //    AvailableCount = 100,
-            //    Country = "Україна",
-            //    Description = "Присвячена досягненням в космонавтиці...",
-            //    Denomination = 50,
-            //    Diameter = 35.0,
-            //    Series = "Космос України",
-            //};
-            //CoinList.AddCoin(coin1);
-            //CoinList.AddCoin(coin2);
-            //CoinList.AddCoin(coin3);
-            //CoinList.AddCoin(coin4);
-
+            InitializeComponent();
             loadCoins();
             updateSearchAndFilterBlock();
         }
@@ -89,6 +30,8 @@ namespace OOP_NumiStore.Forms
             if (coins == null) { coins = CoinList.Coins; }
 
             flowLayoutPanel1.Controls.Clear();
+
+            bool isFirstControl = true;
 
             foreach (Coin coin in coins)
             {
@@ -102,9 +45,27 @@ namespace OOP_NumiStore.Forms
                     PriceCoin = Convert.ToString(coin.Price),
                     CoinImage = coin.Image
                 };
+
+                if (isFirstControl)
+                {
+                    adminListCoin.Margin = new Padding(adminListCoin.Margin.Left, 0, adminListCoin.Margin.Right, adminListCoin.Margin.Bottom);
+                    isFirstControl = false;
+                }
+
                 adminListCoin.EditCoinButtonClicked += CoinBox_EditButtonClicked;
                 adminListCoin.DeleteCoinButtonClicked += CoinBox_DeleteButtonClicked;
                 flowLayoutPanel1.Controls.Add(adminListCoin);
+            }
+
+            if (flowLayoutPanel1.Controls.Count == 0)
+            {
+                Label noCoinsLabel = new Label
+                {
+                    Text = "Монет не знайдено",
+                    AutoSize = true,
+                    Font = new Font("Arial", 14, FontStyle.Bold),
+                };
+                flowLayoutPanel1.Controls.Add(noCoinsLabel);
             }
         }
 
@@ -114,6 +75,19 @@ namespace OOP_NumiStore.Forms
             modalForm.ShowDialog();
             if (modalForm.isSaved)
             {
+                CoinList.SaveCoinsToFile();
+                loadCoins();
+                updateSearchAndFilterBlock();
+            }
+        }
+
+        private void createNewCoinButton_Click(object sender, EventArgs e)
+        {
+            CreateCoinForm createCoinForm = new();
+            createCoinForm.ShowDialog();
+            if (createCoinForm.isCreated)
+            {
+                CoinList.AddCoin(createCoinForm.newCoin);
                 CoinList.SaveCoinsToFile();
                 loadCoins();
                 updateSearchAndFilterBlock();
@@ -331,6 +305,11 @@ namespace OOP_NumiStore.Forms
             }
 
             loadCoins(filteredCoins);
+
+            //if (!CoinList.Coins.Equals(filteredCoins))
+            //{
+            //    loadCoins(filteredCoins);
+            //}
         }
 
         private void InvalidTextBox(System.Windows.Forms.TextBox curTextBox, string error = "")
