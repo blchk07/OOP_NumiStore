@@ -131,7 +131,7 @@ namespace OOP_NumiStore.Models
 
         public Admin? LoginAdmin(string login, string password)
         {
-            Admin? admin = Admins.Find(u => u.Login == login &&  u.Password == password);
+            Admin? admin = Admins.Find(u => u.Login == login && u.Password == password);
             return admin;
         }
         public Customer? LoginCustomer(string login, string password)

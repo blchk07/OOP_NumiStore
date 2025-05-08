@@ -32,6 +32,29 @@ namespace OOP_NumiStore.Forms
 
         public bool isCreated { get; private set; } = false;
 
+        private int SetUniqueId()
+        {
+            CoinsList coinsList = new CoinsList();
+            const string idFilePath = "max_id.txt";
+
+            int maxIdFromFile = 0;
+            if (File.Exists(idFilePath))
+            {
+                string fileContent = File.ReadAllText(idFilePath);
+                if (int.TryParse(fileContent, out int parsedId))
+                {
+                    maxIdFromFile = parsedId;
+                }
+            }
+
+            int maxIdFromList = coinsList.Coins.Any() ? coinsList.Coins.Max(c => c.Id) : 0;
+            int maxId = Math.Max(maxIdFromFile, maxIdFromList);
+            int newId = maxId + 1;
+            File.WriteAllText(idFilePath, newId.ToString());
+
+            return newId;
+        }
+
         private void createCoinButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(coinNameTextBox.Text.Trim()))
@@ -81,7 +104,7 @@ namespace OOP_NumiStore.Forms
                 MessageBox.Show("Діаметр має бути додатним числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            newCoin.Id = SetUniqueId();
             newCoin.Name = coinNameTextBox.Text.Trim();
             newCoin.Year = year;
             newCoin.Material = coinMaterialComboBox.Text.Trim();

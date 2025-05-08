@@ -9,8 +9,7 @@ namespace OOP_NumiStore.Models
 {
     public class Coin
     {
-        private static int _idCounter = 1;
-        public readonly int Id = _idCounter++;
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
         public string Material { get; set; }
