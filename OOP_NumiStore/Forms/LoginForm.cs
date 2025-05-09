@@ -10,8 +10,6 @@ namespace OOP_NumiStore
         {
             InitializeComponent();
             usersManager = new UsersManager();
-            //usersManager.GenerateTestDataForAdmin();
-            //usersManager.GenerateTestDataForCustomer();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

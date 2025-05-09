@@ -29,6 +29,51 @@ namespace OOP_NumiStore.Models
             ReadCustomersFromFile();
         }
 
+        public bool EditUser(User user, string newPassword, string newEmail, string newName, string newSurname)
+        {
+            if (user == null) return false;
+            if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(newEmail) || string.IsNullOrWhiteSpace(newName) || string.IsNullOrWhiteSpace(newSurname))
+            {
+                return false;
+            }
+
+            if ((newEmail != user.Email && (Admins.Any(a => a.Email == newEmail) || Customers.Any(a => a.Email == newEmail))))
+            {
+                return false;
+            }
+
+            user.Password = newPassword;
+            user.Email = newEmail;
+            user.Name = newName;
+            user.Surname = newSurname;
+
+            if (user is Admin)
+            {
+                Admin? adminToEdit = Admins.FirstOrDefault(a => a.Login == user.Login);
+                if (adminToEdit != null)
+                {
+                    adminToEdit.Password = newPassword;
+                    adminToEdit.Email = newEmail;
+                    adminToEdit.Name = newName;
+                    adminToEdit.Surname = newSurname;
+                }
+                SaveToFile(adminPath, Admins);
+            }
+            else if (user is Customer)
+            {
+                Customer? customerToEdit = Customers.FirstOrDefault(c => c.Login == user.Login);
+                if (customerToEdit != null)
+                {
+                    customerToEdit.Password = newPassword;
+                    customerToEdit.Email = newEmail;
+                    customerToEdit.Name = newName;
+                    customerToEdit.Surname = newSurname;
+                }
+                SaveToFile(customerPath, Customers);
+            }
+            return true;
+        }
+
         public Admin? RegisterAdmin(string login, string password, string email, string name, string surname, out string errorMessage)
         {
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname))

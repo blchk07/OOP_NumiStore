@@ -300,6 +300,8 @@
             Controls.Add(coinMaterialComboBox);
             Controls.Add(coinCountryComboBox);
             Controls.Add(coinSeriesComboBox);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "CreateCoinForm";
             Text = "Створити нову монету";
             panel1.ResumeLayout(false);

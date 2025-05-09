@@ -21,6 +21,9 @@ namespace OOP_NumiStore.Forms
         {
             currentUser = UserSession.currentUser;
             InitializeComponent();
+            userLoginLinkLabel.Text = $"{currentUser.Name} {currentUser.Surname}".Trim();
+            new ToolTip().SetToolTip(userLoginLinkLabel, "Налаштування акаунту");
+
             loadCoins();
             updateSearchAndFilterBlock();
         }
@@ -316,6 +319,27 @@ namespace OOP_NumiStore.Forms
         {
             curTextBox.BackColor = Color.LightPink;
             MessageBox.Show(error, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Ви впевнені що хочете вийти?", "Вийти з акаунту", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                UserSession.Logout();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                this.Hide();
+            }
+        }
+
+        private void userLoginLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EditAccountForm modalForm = new EditAccountForm(currentUser);
+            modalForm.ShowDialog();
+            if (modalForm.isEdited)
+            {
+                userLoginLinkLabel.Text = $"{currentUser.Name} {currentUser.Surname}".Trim();
+            }
         }
     }
 }

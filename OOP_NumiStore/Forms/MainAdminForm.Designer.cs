@@ -61,9 +61,16 @@ namespace OOP_NumiStore.Forms
             label1 = new Label();
             coinCountryComboBox = new ComboBox();
             coinMaterialsCheckedListBox = new CheckedListBox();
+            headerPanel = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            userLoginLinkLabel = new LinkLabel();
+            logoutButton = new Button();
+            headName = new Label();
             coinListBlockPanel.SuspendLayout();
             mainHeaderPanel.SuspendLayout();
             searchBlockPanel.SuspendLayout();
+            headerPanel.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -82,7 +89,7 @@ namespace OOP_NumiStore.Forms
             coinListBlockPanel.BackColor = Color.FromArgb(226, 226, 226);
             coinListBlockPanel.Controls.Add(mainHeaderPanel);
             coinListBlockPanel.Controls.Add(flowLayoutPanel1);
-            coinListBlockPanel.Location = new Point(244, 0);
+            coinListBlockPanel.Location = new Point(246, 45);
             coinListBlockPanel.Name = "coinListBlockPanel";
             coinListBlockPanel.Size = new Size(559, 515);
             coinListBlockPanel.TabIndex = 1;
@@ -147,7 +154,7 @@ namespace OOP_NumiStore.Forms
             searchBlockPanel.Controls.Add(label1);
             searchBlockPanel.Controls.Add(coinCountryComboBox);
             searchBlockPanel.Controls.Add(coinMaterialsCheckedListBox);
-            searchBlockPanel.Location = new Point(0, 0);
+            searchBlockPanel.Location = new Point(2, 45);
             searchBlockPanel.Name = "searchBlockPanel";
             searchBlockPanel.Size = new Size(241, 515);
             searchBlockPanel.TabIndex = 2;
@@ -382,11 +389,76 @@ namespace OOP_NumiStore.Forms
             coinMaterialsCheckedListBox.Sorted = true;
             coinMaterialsCheckedListBox.TabIndex = 29;
             // 
+            // headerPanel
+            // 
+            headerPanel.BackColor = Color.White;
+            headerPanel.BorderStyle = BorderStyle.FixedSingle;
+            headerPanel.Controls.Add(tableLayoutPanel1);
+            headerPanel.Controls.Add(headName);
+            headerPanel.Dock = DockStyle.Top;
+            headerPanel.Location = new Point(0, 0);
+            headerPanel.Name = "headerPanel";
+            headerPanel.Size = new Size(804, 46);
+            headerPanel.TabIndex = 3;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 71.08014F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.91986F));
+            tableLayoutPanel1.Controls.Add(userLoginLinkLabel, 0, 0);
+            tableLayoutPanel1.Controls.Add(logoutButton, 1, 0);
+            tableLayoutPanel1.Location = new Point(496, 8);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(287, 29);
+            tableLayoutPanel1.TabIndex = 4;
+            // 
+            // userLoginLinkLabel
+            // 
+            userLoginLinkLabel.Anchor = AnchorStyles.Right;
+            userLoginLinkLabel.AutoSize = true;
+            userLoginLinkLabel.LinkColor = Color.Black;
+            userLoginLinkLabel.Location = new Point(142, 7);
+            userLoginLinkLabel.Name = "userLoginLinkLabel";
+            userLoginLinkLabel.Size = new Size(59, 15);
+            userLoginLinkLabel.TabIndex = 5;
+            userLoginLinkLabel.TabStop = true;
+            userLoginLinkLabel.Text = "userLogin";
+            userLoginLinkLabel.LinkClicked += userLoginLinkLabel_LinkClicked;
+            // 
+            // logoutButton
+            // 
+            logoutButton.Anchor = AnchorStyles.Right;
+            logoutButton.Cursor = Cursors.Hand;
+            logoutButton.Location = new Point(209, 3);
+            logoutButton.Name = "logoutButton";
+            logoutButton.Size = new Size(75, 23);
+            logoutButton.TabIndex = 2;
+            logoutButton.Text = "Вийти";
+            logoutButton.UseVisualStyleBackColor = true;
+            logoutButton.Click += logoutButton_Click;
+            // 
+            // headName
+            // 
+            headName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            headName.AutoSize = true;
+            headName.Font = new Font("Stencil", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            headName.Location = new Point(31, 3);
+            headName.Name = "headName";
+            headName.Size = new Size(196, 38);
+            headName.TabIndex = 1;
+            headName.Text = "NumiStore";
+            // 
             // MainAdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(803, 515);
+            ClientSize = new Size(804, 560);
+            Controls.Add(headerPanel);
             Controls.Add(searchBlockPanel);
             Controls.Add(coinListBlockPanel);
             Name = "MainAdminForm";
@@ -397,6 +469,10 @@ namespace OOP_NumiStore.Forms
             mainHeaderPanel.PerformLayout();
             searchBlockPanel.ResumeLayout(false);
             searchBlockPanel.PerformLayout();
+            headerPanel.ResumeLayout(false);
+            headerPanel.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -434,5 +510,10 @@ namespace OOP_NumiStore.Forms
         private CheckedListBox coinMaterialsCheckedListBox;
         private Button createNewCoinButton;
         private Panel mainHeaderPanel;
+        private Panel headerPanel;
+        private Label headName;
+        private Button logoutButton;
+        private TableLayoutPanel tableLayoutPanel1;
+        private LinkLabel userLoginLinkLabel;
     }
 }
