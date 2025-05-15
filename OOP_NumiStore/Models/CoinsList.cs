@@ -1,66 +1,121 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
+using System.Text.Unicode;
 
 namespace OOP_NumiStore.Models
 {
     public class CoinsList
     {
-        public List<Coin> Coins { get; private set; } = new List<Coin>();
-        private const string coinFilePath = @"json\coins.json";
+        private const string regularCoinFilePath = @"json\regular_coins.json";
+        private const string collectibleCoinFilePath = @"json\collectible_coins.json";
+
         private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
         {
             WriteIndented = true,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
         };
+
+        public List<RegularCoin> RegularCoins { get; private set; } = new();
+        public List<CollectibleCoin> CollectibleCoins { get; private set; } = new();
+        public IEnumerable<CoinBase> AllCoins => RegularCoins.Cast<CoinBase>().Concat(CollectibleCoins);
+
         public CoinsList()
         {
             LoadCoinsFromFile();
         }
-        public void AddCoin(Coin coin)
+
+        public void AddCoin(CoinBase coin)
         {
-            Coins.Add(coin);
-            SaveCoinsToFile();
-        }
-        public void RemoveCoin(Coin coin)
-        {
-            Coins.Remove(coin);
-            SaveCoinsToFile();
-        }
-        public void ClearCoins()
-        {
-            Coins.Clear();
-            SaveCoinsToFile();
+            if (coin is RegularCoin regular)
+            {
+                RegularCoins.Add(regular);
+                SaveRegularCoins();
+            }
+            else if (coin is CollectibleCoin collectible)
+            {
+                CollectibleCoins.Add(collectible);
+                SaveCollectibleCoins();
+            }
         }
 
-        public void SaveCoinsToFile()
+        public void RemoveCoin(CoinBase coin)
+        {
+            if (coin is RegularCoin regular)
+            {
+                RegularCoins.Remove(regular);
+                SaveRegularCoins();
+            }
+            else if (coin is CollectibleCoin collectible)
+            {
+                CollectibleCoins.Remove(collectible);
+                SaveCollectibleCoins();
+            }
+        }
+
+        public void ClearCoins()
+        {
+            RegularCoins.Clear();
+            CollectibleCoins.Clear();
+            SaveRegularCoins();
+            SaveCollectibleCoins();
+        }
+
+        private void SaveRegularCoins()
         {
             try
             {
-                string json = JsonSerializer.Serialize(Coins, _jsonOptions);
-                File.WriteAllText(coinFilePath, json, System.Text.Encoding.UTF8);
+                string json = JsonSerializer.Serialize(RegularCoins, _jsonOptions);
+                File.WriteAllText(regularCoinFilePath, json);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка при збереженні монет у файл: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка при збереженні регулярних монет: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SaveCollectibleCoins()
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(CollectibleCoins, _jsonOptions);
+                File.WriteAllText(collectibleCoinFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при збереженні колекційних монет: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadCoinsFromFile()
         {
-            if (File.Exists(coinFilePath))
+            RegularCoins = LoadFromFile<RegularCoin>(regularCoinFilePath);
+            CollectibleCoins = LoadFromFile<CollectibleCoin>(collectibleCoinFilePath);
+        }
+
+        private List<T> LoadFromFile<T>(string filePath)
+        {
+            try
             {
-                string data = File.ReadAllText(coinFilePath);
-                if (data.Trim() != "")
+                if (File.Exists(filePath))
                 {
-                    Coins = JsonSerializer.Deserialize<List<Coin>>(data, _jsonOptions) ?? new List<Coin>();
-                    return;
+                    string data = File.ReadAllText(filePath);
+                    if (!string.IsNullOrWhiteSpace(data))
+                    {
+                        return JsonSerializer.Deserialize<List<T>>(data, _jsonOptions) ?? new List<T>();
+                    }
                 }
             }
-            Coins = new List<Coin>();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при завантаженні з файлу {filePath}: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return new List<T>();
+        }
+        public void SaveCoinsToFile(CoinBase currentCoin)
+        {
+            if (currentCoin is RegularCoin) SaveRegularCoins();
+            else if (currentCoin is CollectibleCoin) SaveCollectibleCoins();
         }
     }
 }

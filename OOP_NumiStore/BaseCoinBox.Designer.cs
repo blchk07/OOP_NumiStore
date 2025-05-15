@@ -34,12 +34,13 @@
             coinEditButton = new Button();
             pictureCoin = new PictureBox();
             yearCoinText = new Label();
-            countryCoinText = new Label();
+            typeCoinText = new Label();
             coinDeleteButton = new Button();
             adminPanelButtons = new Panel();
             customerPanelButtons = new Panel();
             coinBasketButton = new Button();
             coinDetailsButton = new Button();
+            availableCountText = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureCoin).BeginInit();
             adminPanelButtons.SuspendLayout();
             customerPanelButtons.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             coinTitle.AutoSize = true;
             coinTitle.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinTitle.Location = new Point(136, 11);
+            coinTitle.Location = new Point(136, 6);
             coinTitle.Margin = new Padding(0);
             coinTitle.Name = "coinTitle";
             coinTitle.Size = new Size(56, 30);
@@ -59,9 +60,10 @@
             // priceCoinText
             // 
             priceCoinText.AutoSize = true;
-            priceCoinText.Location = new Point(136, 87);
+            priceCoinText.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            priceCoinText.Location = new Point(136, 98);
             priceCoinText.Name = "priceCoinText";
-            priceCoinText.Size = new Size(35, 15);
+            priceCoinText.Size = new Size(36, 15);
             priceCoinText.TabIndex = 1;
             priceCoinText.Text = "Ціна:";
             // 
@@ -91,20 +93,20 @@
             // yearCoinText
             // 
             yearCoinText.AutoSize = true;
-            yearCoinText.Location = new Point(136, 45);
+            yearCoinText.Location = new Point(136, 57);
             yearCoinText.Name = "yearCoinText";
             yearCoinText.Size = new Size(26, 15);
             yearCoinText.TabIndex = 4;
             yearCoinText.Text = "Рік:";
             // 
-            // countryCoinText
+            // typeCoinText
             // 
-            countryCoinText.AutoSize = true;
-            countryCoinText.Location = new Point(136, 66);
-            countryCoinText.Name = "countryCoinText";
-            countryCoinText.Size = new Size(46, 15);
-            countryCoinText.TabIndex = 5;
-            countryCoinText.Text = "Країна:";
+            typeCoinText.AutoSize = true;
+            typeCoinText.Location = new Point(136, 36);
+            typeCoinText.Name = "typeCoinText";
+            typeCoinText.Size = new Size(30, 15);
+            typeCoinText.TabIndex = 5;
+            typeCoinText.Text = "Тип:";
             // 
             // coinDeleteButton
             // 
@@ -163,14 +165,24 @@
             coinDetailsButton.UseVisualStyleBackColor = true;
             coinDetailsButton.Click += coinDetailsButton_Click;
             // 
+            // availableCountText
+            // 
+            availableCountText.AutoSize = true;
+            availableCountText.Location = new Point(136, 77);
+            availableCountText.Name = "availableCountText";
+            availableCountText.Size = new Size(59, 15);
+            availableCountText.TabIndex = 9;
+            availableCountText.Text = "Кількість:";
+            // 
             // BaseCoinBox
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.WhiteSmoke;
+            Controls.Add(availableCountText);
             Controls.Add(adminPanelButtons);
-            Controls.Add(countryCoinText);
+            Controls.Add(typeCoinText);
             Controls.Add(yearCoinText);
             Controls.Add(pictureCoin);
             Controls.Add(priceCoinText);
@@ -193,11 +205,12 @@
         private Button coinEditButton;
         private PictureBox pictureCoin;
         private Label yearCoinText;
-        private Label countryCoinText;
+        private Label typeCoinText;
         private Button coinDeleteButton;
         private Button coinBasketButton;
         private Button coinDetailsButton;
         public Panel customerPanelButtons;
         public Panel adminPanelButtons;
+        private Label availableCountText;
     }
 }

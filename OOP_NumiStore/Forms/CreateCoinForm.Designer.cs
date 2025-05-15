@@ -39,7 +39,6 @@
             coinDiametrTextBox = new TextBox();
             label8 = new Label();
             coinDenominationTextBox = new TextBox();
-            label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -50,8 +49,9 @@
             coinYearTextBox = new TextBox();
             coinNameTextBox = new TextBox();
             coinMaterialComboBox = new ComboBox();
-            coinCountryComboBox = new ComboBox();
             coinSeriesComboBox = new ComboBox();
+            collectibleCoinRadioButton = new RadioButton();
+            regularCoinRadioButton = new RadioButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coinPictureBox).BeginInit();
             SuspendLayout();
@@ -156,15 +156,6 @@
             coinDenominationTextBox.Size = new Size(168, 23);
             coinDenominationTextBox.TabIndex = 49;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(100, 220);
-            label7.Name = "label7";
-            label7.Size = new Size(43, 15);
-            label7.TabIndex = 48;
-            label7.Text = "Країна";
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -251,19 +242,6 @@
             coinMaterialComboBox.Sorted = true;
             coinMaterialComboBox.TabIndex = 58;
             // 
-            // coinCountryComboBox
-            // 
-            coinCountryComboBox.DropDownHeight = 150;
-            coinCountryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            coinCountryComboBox.FormattingEnabled = true;
-            coinCountryComboBox.IntegralHeight = false;
-            coinCountryComboBox.Location = new Point(149, 217);
-            coinCountryComboBox.MaxDropDownItems = 10;
-            coinCountryComboBox.Name = "coinCountryComboBox";
-            coinCountryComboBox.Size = new Size(168, 23);
-            coinCountryComboBox.Sorted = true;
-            coinCountryComboBox.TabIndex = 59;
-            // 
             // coinSeriesComboBox
             // 
             coinSeriesComboBox.FormattingEnabled = true;
@@ -273,11 +251,37 @@
             coinSeriesComboBox.Sorted = true;
             coinSeriesComboBox.TabIndex = 60;
             // 
+            // collectibleCoinRadioButton
+            // 
+            collectibleCoinRadioButton.AutoSize = true;
+            collectibleCoinRadioButton.Location = new Point(496, 335);
+            collectibleCoinRadioButton.Name = "collectibleCoinRadioButton";
+            collectibleCoinRadioButton.Size = new Size(88, 19);
+            collectibleCoinRadioButton.TabIndex = 61;
+            collectibleCoinRadioButton.TabStop = true;
+            collectibleCoinRadioButton.Text = "Сувернірна";
+            collectibleCoinRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // regularCoinRadioButton
+            // 
+            regularCoinRadioButton.AutoSize = true;
+            regularCoinRadioButton.Checked = true;
+            regularCoinRadioButton.Location = new Point(401, 335);
+            regularCoinRadioButton.Name = "regularCoinRadioButton";
+            regularCoinRadioButton.Size = new Size(80, 19);
+            regularCoinRadioButton.TabIndex = 62;
+            regularCoinRadioButton.TabStop = true;
+            regularCoinRadioButton.Text = "Оборотна";
+            regularCoinRadioButton.UseVisualStyleBackColor = true;
+            regularCoinRadioButton.CheckedChanged += regularCoinRadioButton_CheckedChanged;
+            // 
             // CreateCoinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 504);
+            Controls.Add(regularCoinRadioButton);
+            Controls.Add(collectibleCoinRadioButton);
             Controls.Add(coinDescriptionTextBox);
             Controls.Add(createCoinButton);
             Controls.Add(panel1);
@@ -287,7 +291,6 @@
             Controls.Add(coinDiametrTextBox);
             Controls.Add(label8);
             Controls.Add(coinDenominationTextBox);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -298,7 +301,6 @@
             Controls.Add(coinYearTextBox);
             Controls.Add(coinNameTextBox);
             Controls.Add(coinMaterialComboBox);
-            Controls.Add(coinCountryComboBox);
             Controls.Add(coinSeriesComboBox);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -323,7 +325,6 @@
         private TextBox coinDiametrTextBox;
         private Label label8;
         private TextBox coinDenominationTextBox;
-        private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
@@ -334,7 +335,8 @@
         private TextBox coinYearTextBox;
         private TextBox coinNameTextBox;
         private ComboBox coinMaterialComboBox;
-        private ComboBox coinCountryComboBox;
         private ComboBox coinSeriesComboBox;
+        private RadioButton collectibleCoinRadioButton;
+        private RadioButton regularCoinRadioButton;
     }
 }

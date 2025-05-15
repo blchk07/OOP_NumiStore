@@ -5,31 +5,34 @@ namespace OOP_NumiStore.Forms
 {
     public partial class CreateCoinForm : Form
     {
+        private bool isRegularCoin = true;
+
         public CreateCoinForm()
         {
             InitializeComponent();
             InitializeForm();
         }
+
         public void InitializeForm()
         {
             coinMaterialComboBox.Items.AddRange(CoinSettings.coinMaterials.ToArray());
-            coinCountryComboBox.Items.AddRange(CoinSettings.coinCountries.ToArray());
 
             CoinsList coinsList = new CoinsList();
-            Array avaiableSeries = coinsList.Coins.Select(c => c.Series).Distinct().ToArray();
+            var availableSeries = coinsList.AllCoins.Select(c => c.Series).Distinct().ToArray();
 
-            if (avaiableSeries.Length > 0)
+            if (availableSeries.Length > 0)
             {
-                coinSeriesComboBox.Items.AddRange(coinsList.Coins.Select(c => c.Series).Distinct().ToArray());
+                coinSeriesComboBox.Items.AddRange(availableSeries);
             }
             else
             {
                 coinSeriesComboBox.DropDownStyle = ComboBoxStyle.Simple;
             }
+
+            regularCoinRadioButton.Checked = true;
         }
 
-        public Coin newCoin { get; } = new Coin();
-
+        public CoinBase newCoin { get; private set; }
         public bool isCreated { get; private set; } = false;
 
         private int SetUniqueId()
@@ -47,7 +50,7 @@ namespace OOP_NumiStore.Forms
                 }
             }
 
-            int maxIdFromList = coinsList.Coins.Any() ? coinsList.Coins.Max(c => c.Id) : 0;
+            int maxIdFromList = coinsList.AllCoins.Any() ? coinsList.AllCoins.Max(c => c.Id) : 0;
             int maxId = Math.Max(maxIdFromFile, maxIdFromList);
             int newId = maxId + 1;
             File.WriteAllText(idFilePath, newId.ToString());
@@ -69,12 +72,6 @@ namespace OOP_NumiStore.Forms
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(coinCountryComboBox.Text))
-            {
-                MessageBox.Show("Будь ласка, виберіть або введіть країну!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (!int.TryParse(coinYearTextBox.Text, out int year) || year < 0 || year > DateTime.Now.Year)
             {
                 MessageBox.Show($"Рік має бути числом від 0 до {DateTime.Now.Year}!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -93,25 +90,33 @@ namespace OOP_NumiStore.Forms
                 return;
             }
 
-            if (!int.TryParse(coinDenominationTextBox.Text, out int denomination) || denomination <= 0)
-            {
-                MessageBox.Show("Номінал має бути додатним числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (!double.TryParse(coinDiametrTextBox.Text, out double diameter) || diameter <= 0)
             {
                 MessageBox.Show("Діаметр має бути додатним числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (isRegularCoin)
+            {
+                if (!int.TryParse(coinDenominationTextBox.Text, out int denomination) || denomination <= 0)
+                {
+                    MessageBox.Show("Номінал має бути додатним числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                newCoin = new RegularCoin { Denomination = denomination };
+            }
+            else
+            {
+                newCoin = new CollectibleCoin();
+            }
+
             newCoin.Id = SetUniqueId();
             newCoin.Name = coinNameTextBox.Text.Trim();
             newCoin.Year = year;
             newCoin.Material = coinMaterialComboBox.Text.Trim();
             newCoin.Price = price;
             newCoin.AvailableCount = availableCount;
-            newCoin.Country = coinCountryComboBox.Text.Trim();
-            newCoin.Denomination = denomination;
             newCoin.Diameter = diameter;
             newCoin.Series = coinSeriesComboBox.Text.Trim();
             newCoin.Description = coinDescriptionTextBox.Text.Trim();
@@ -120,6 +125,17 @@ namespace OOP_NumiStore.Forms
 
             MessageBox.Show("Монета створена успішно", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
+        }
+
+        private void regularCoinRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            isRegularCoin = regularCoinRadioButton.Checked;
+            coinDenominationTextBox.Enabled = isRegularCoin;
+
+            if (!isRegularCoin)
+            {
+                coinDenominationTextBox.Text = "";
+            }
         }
     }
 }

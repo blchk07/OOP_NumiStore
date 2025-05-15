@@ -7,19 +7,39 @@ using System.Threading.Tasks;
 
 namespace OOP_NumiStore.Models
 {
-    public class Coin
+    //public class Coin
+    //{
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //    public int Year { get; set; }
+    //    public string Material { get; set; }
+    //    public decimal Price { get; set; }
+    //    public int AvailableCount { get; set; }
+    //    public string Country { get; set; }
+
+    //    public Image Image { get; set; }
+    //    public string Description { get; set; }
+    //    public int Denomination { get; set; }
+    //    public double Diameter { get; set; }
+    //    public string Series { get; set; }
+
+    //    public override string ToString()
+    //    {
+    //        return $"{Name} ({Year}) - {Material}";
+    //    }
+    //}
+
+    public abstract class CoinBase
     {
+        public abstract string Type { get; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
         public string Material { get; set; }
         public decimal Price { get; set; }
         public int AvailableCount { get; set; }
-        public string Country { get; set; }
-
         public Image Image { get; set; }
         public string Description { get; set; }
-        public int Denomination { get; set; }
         public double Diameter { get; set; }
         public string Series { get; set; }
 
@@ -27,6 +47,15 @@ namespace OOP_NumiStore.Models
         {
             return $"{Name} ({Year}) - {Material}";
         }
+    }
+    public class RegularCoin : CoinBase
+    {
+        public override string Type { get; } = "Оборотна";
+        public int Denomination { get; set; }
+    }
+    public class CollectibleCoin : CoinBase
+    {
+        public override string Type { get; } = "Сувенірна";
     }
 
     public static class CoinSettings

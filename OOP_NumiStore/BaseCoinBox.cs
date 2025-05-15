@@ -6,10 +6,10 @@ namespace OOP_NumiStore
 {
     public partial class BaseCoinBox : UserControl
     {
-        public event EventHandler<Coin> EditCoinButtonClicked;
-        public event EventHandler<Coin> DeleteCoinButtonClicked;
-        public event EventHandler<Coin> CoinDetailsButtonClicked;
-        public event EventHandler<Coin> CoinBasketButtonClicked;
+        public event EventHandler<CoinBase> EditCoinButtonClicked;
+        public event EventHandler<CoinBase> DeleteCoinButtonClicked;
+        public event EventHandler<CoinBase> CoinDetailsButtonClicked;
+        public event EventHandler<CoinBase> CoinBasketButtonClicked;
         public BaseCoinBox(User currentUser)
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace OOP_NumiStore
             customerPanelButtons.Visible = currentUser is Customer;
         }
 
-        public Coin Coin { get; set; }
+        public CoinBase Coin { get; set; }
 
         [Category("Custom Props")]
         public string CoinTitle
@@ -31,16 +31,22 @@ namespace OOP_NumiStore
             set { coinTitle.Text = value; }
         }
 
+        [Category("Custom Props")]
+        public string TypeCoin
+        {
+            set { typeCoinText.Text = $"Тип: {value}"; }
+        }
+
+        [Category("Custom Props")]
+        public string AvailableCountCoin
+        {
+            set { availableCountText.Text = $"Кількість: {value}"; }
+        }
+
         [Category("Custom props")]
         public string YearCoin
         {
             set { yearCoinText.Text = $"Рік: {value}"; }
-        }
-
-        [Category("Custom props")]
-        public string CountryCoin
-        {
-            set { countryCoinText.Text = $"Країна: {value}"; }
         }
 
         [Category("Custom Props")]

@@ -39,7 +39,6 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             label8 = new Label();
             coinDenominationTextBox = new TextBox();
             label9 = new Label();
@@ -52,36 +51,36 @@
             saveChangesButton = new Button();
             coinDescriptionTextBox = new RichTextBox();
             coinMaterialComboBox = new ComboBox();
-            coinCountryComboBox = new ComboBox();
             coinSeriesComboBox = new ComboBox();
+            typeCoinLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)coinPictureBox).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // coinNameTextBox
             // 
-            coinNameTextBox.Location = new Point(144, 54);
+            coinNameTextBox.Location = new Point(144, 88);
             coinNameTextBox.Name = "coinNameTextBox";
             coinNameTextBox.Size = new Size(168, 23);
             coinNameTextBox.TabIndex = 1;
             // 
             // coinYearTextBox
             // 
-            coinYearTextBox.Location = new Point(144, 92);
+            coinYearTextBox.Location = new Point(144, 126);
             coinYearTextBox.Name = "coinYearTextBox";
             coinYearTextBox.Size = new Size(168, 23);
             coinYearTextBox.TabIndex = 2;
             // 
             // coinPriceTextBox
             // 
-            coinPriceTextBox.Location = new Point(144, 169);
+            coinPriceTextBox.Location = new Point(144, 203);
             coinPriceTextBox.Name = "coinPriceTextBox";
             coinPriceTextBox.Size = new Size(168, 23);
             coinPriceTextBox.TabIndex = 4;
             // 
             // coinAvaiableCountTextBox
             // 
-            coinAvaiableCountTextBox.Location = new Point(144, 207);
+            coinAvaiableCountTextBox.Location = new Point(144, 241);
             coinAvaiableCountTextBox.Name = "coinAvaiableCountTextBox";
             coinAvaiableCountTextBox.Size = new Size(168, 23);
             coinAvaiableCountTextBox.TabIndex = 5;
@@ -90,7 +89,7 @@
             // 
             coinIdTextBox.Cursor = Cursors.No;
             coinIdTextBox.HideSelection = false;
-            coinIdTextBox.Location = new Point(144, 16);
+            coinIdTextBox.Location = new Point(144, 50);
             coinIdTextBox.Name = "coinIdTextBox";
             coinIdTextBox.ReadOnly = true;
             coinIdTextBox.Size = new Size(47, 23);
@@ -99,7 +98,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 19);
+            label1.Location = new Point(54, 53);
             label1.Name = "label1";
             label1.Size = new Size(84, 15);
             label1.TabIndex = 8;
@@ -108,7 +107,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(99, 57);
+            label2.Location = new Point(99, 91);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 9;
@@ -117,7 +116,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(68, 95);
+            label3.Location = new Point(68, 129);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 10;
@@ -126,7 +125,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(80, 134);
+            label4.Location = new Point(80, 168);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 11;
@@ -135,7 +134,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(81, 172);
+            label5.Location = new Point(81, 206);
             label5.Name = "label5";
             label5.Size = new Size(57, 15);
             label5.TabIndex = 12;
@@ -144,20 +143,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(6, 210);
+            label6.Location = new Point(6, 244);
             label6.Name = "label6";
             label6.Size = new Size(132, 15);
             label6.TabIndex = 13;
             label6.Text = "Доступна кількість, шт";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(95, 248);
-            label7.Name = "label7";
-            label7.Size = new Size(43, 15);
-            label7.TabIndex = 14;
-            label7.Text = "Країна";
             // 
             // label8
             // 
@@ -264,24 +254,12 @@
             coinMaterialComboBox.DropDownHeight = 150;
             coinMaterialComboBox.FormattingEnabled = true;
             coinMaterialComboBox.IntegralHeight = false;
-            coinMaterialComboBox.Location = new Point(144, 131);
+            coinMaterialComboBox.Location = new Point(144, 165);
             coinMaterialComboBox.MaxDropDownItems = 10;
             coinMaterialComboBox.Name = "coinMaterialComboBox";
             coinMaterialComboBox.Size = new Size(168, 23);
             coinMaterialComboBox.Sorted = true;
             coinMaterialComboBox.TabIndex = 34;
-            // 
-            // coinCountryComboBox
-            // 
-            coinCountryComboBox.DropDownHeight = 150;
-            coinCountryComboBox.FormattingEnabled = true;
-            coinCountryComboBox.IntegralHeight = false;
-            coinCountryComboBox.Location = new Point(144, 245);
-            coinCountryComboBox.MaxDropDownItems = 10;
-            coinCountryComboBox.Name = "coinCountryComboBox";
-            coinCountryComboBox.Size = new Size(168, 23);
-            coinCountryComboBox.Sorted = true;
-            coinCountryComboBox.TabIndex = 35;
             // 
             // coinSeriesComboBox
             // 
@@ -292,11 +270,22 @@
             coinSeriesComboBox.Sorted = true;
             coinSeriesComboBox.TabIndex = 36;
             // 
+            // typeCoinLabel
+            // 
+            typeCoinLabel.AutoSize = true;
+            typeCoinLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            typeCoinLabel.Location = new Point(67, 16);
+            typeCoinLabel.Name = "typeCoinLabel";
+            typeCoinLabel.Size = new Size(80, 15);
+            typeCoinLabel.TabIndex = 37;
+            typeCoinLabel.Text = "Тип монети:  ";
+            // 
             // EditCoinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(651, 519);
+            Controls.Add(typeCoinLabel);
             Controls.Add(coinDescriptionTextBox);
             Controls.Add(saveChangesButton);
             Controls.Add(panel1);
@@ -306,7 +295,6 @@
             Controls.Add(coinDiametrTextBox);
             Controls.Add(label8);
             Controls.Add(coinDenominationTextBox);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -319,7 +307,6 @@
             Controls.Add(coinYearTextBox);
             Controls.Add(coinNameTextBox);
             Controls.Add(coinMaterialComboBox);
-            Controls.Add(coinCountryComboBox);
             Controls.Add(coinSeriesComboBox);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -343,7 +330,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
         private Label label8;
         private TextBox coinDenominationTextBox;
         private Label label9;
@@ -356,7 +342,7 @@
         private Button saveChangesButton;
         private RichTextBox coinDescriptionTextBox;
         private ComboBox coinMaterialComboBox;
-        private ComboBox coinCountryComboBox;
         private ComboBox coinSeriesComboBox;
+        private Label typeCoinLabel;
     }
 }

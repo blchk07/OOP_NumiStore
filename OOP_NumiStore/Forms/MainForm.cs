@@ -29,23 +29,24 @@ namespace OOP_NumiStore.Forms
             updateSearchAndFilterBlock();
         }
 
-        public void loadCoins(List<Coin>? coins = null)
+        public void loadCoins(List<CoinBase>? coins = null)
         {
-            if (coins == null) { coins = CoinList.Coins; }
+            if (coins == null) { coins = CoinList.AllCoins.ToList(); }
 
             flowLayoutPanel1.Controls.Clear();
 
             bool isFirstControl = true;
 
-            foreach (Coin coin in coins)
+            foreach (var coin in coins)
             {
                 BaseCoinBox listCoin = new BaseCoinBox(currentUser)
                 {
                     Coin = coin,
                     Width = flowLayoutPanel1.Width - 20,
                     CoinTitle = coin.Name,
+                    TypeCoin = coin.Type,
+                    AvailableCountCoin = Convert.ToString(coin.AvailableCount),
                     YearCoin = Convert.ToString(coin.Year),
-                    CountryCoin = coin.Country,
                     PriceCoin = Convert.ToString(coin.Price),
                     CoinImage = coin.Image
                 };
@@ -75,19 +76,19 @@ namespace OOP_NumiStore.Forms
             }
         }
 
-        private void CoinBox_EditButtonClicked(object? sender, Coin coin)
+        private void CoinBox_EditButtonClicked(object? sender, CoinBase coin)
         {
             EditCoinForm modalForm = new(coin);
             modalForm.ShowDialog();
             if (modalForm.isSaved)
             {
-                CoinList.SaveCoinsToFile();
+                CoinList.SaveCoinsToFile(coin);
                 loadCoins();
                 updateSearchAndFilterBlock();
             }
         }
 
-        private void CoinBox_DeleteButtonClicked(object? sender, Coin coin)
+        private void CoinBox_DeleteButtonClicked(object? sender, CoinBase coin)
         {
             DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету \"{coin.Name}\"?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
@@ -98,14 +99,14 @@ namespace OOP_NumiStore.Forms
             }
         }
 
-        private void CoinBox_DetailsButtonClicked(object? sender, Coin coin)
+        private void CoinBox_DetailsButtonClicked(object? sender, CoinBase coin)
         {
             //ViewDetailsCoinForm modalForm = new(coin);
             ViewDetailsCoinForm modalForm = new();
             modalForm.ShowDialog();
         }
 
-        private void CoinBox_BasketButtonClicked(object? sender, Coin coin)
+        private void CoinBox_BasketButtonClicked(object? sender, CoinBase coin)
         {
             DialogResult result = MessageBox.Show($"Ви впевнені, що хочете додати монету \"{coin.Name}\" до кошика?", "Додавання монети до кошика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -121,7 +122,7 @@ namespace OOP_NumiStore.Forms
             if (createCoinForm.isCreated)
             {
                 CoinList.AddCoin(createCoinForm.newCoin);
-                CoinList.SaveCoinsToFile();
+                CoinList.SaveCoinsToFile(createCoinForm.newCoin);
                 loadCoins();
                 updateSearchAndFilterBlock();
             }
@@ -134,18 +135,17 @@ namespace OOP_NumiStore.Forms
 
         public void updateSearchAndFilterBlock()
         {
-            coinCountryComboBox.SelectedIndex = -1;
             coinSeriesComboBox.SelectedIndex = -1;
             coinMaterialsCheckedListBox.ClearSelected();
 
-            coinCountryComboBox.Items.Clear();
-            coinCountryComboBox.Items.AddRange(CoinList.Coins.Select(c => c.Country).Distinct().ToArray());
-
             coinMaterialsCheckedListBox.Items.Clear();
-            coinMaterialsCheckedListBox.Items.AddRange(CoinList.Coins.Select(c => c.Material).Distinct().ToArray());
+            coinMaterialsCheckedListBox.Items.AddRange(CoinList.AllCoins.Select(c => c.Material).Distinct().ToArray());
+
+            coinTypesCheckedListBox.Items.Clear();
+            coinTypesCheckedListBox.Items.AddRange(CoinList.AllCoins.Select(c => c.Type).Distinct().ToArray());
 
             coinSeriesComboBox.Items.Clear();
-            coinSeriesComboBox.Items.AddRange(CoinList.Coins.Select(c => c.Series).Distinct().ToArray());
+            coinSeriesComboBox.Items.AddRange(CoinList.AllCoins.Select(c => c.Series).Distinct().ToArray());
         }
 
         private void applySearchButton_Click(object sender, EventArgs e)
@@ -157,18 +157,18 @@ namespace OOP_NumiStore.Forms
             string coinYearFrom = coinYearFromTextBox.Text.Trim();
 
             string coinYearTo = coinYearToTextBox.Text.Trim();
-            string? coinCountry = coinCountryComboBox.SelectedItem?.ToString();
             List<string> coinMaterials = coinMaterialsCheckedListBox.CheckedItems.Cast<string>().ToList();
+            List<string> coinTypes = coinTypesCheckedListBox.CheckedItems.Cast<string>().ToList();
             string? coinSeries = coinSeriesComboBox.SelectedItem?.ToString();
 
             string coinDiameterFrom = coinDiameterFromTextBox.Text.Trim();
             string coinDiameterTo = coinDiameterToTextBox.Text.Trim();
 
-            List<Coin> filteredCoins = CoinList.Coins;
+            List<CoinBase> filteredCoins = CoinList.AllCoins.ToList();
 
             if (!string.IsNullOrWhiteSpace(coinNameNextBox))
             {
-                filteredCoins = CoinList.Coins
+                filteredCoins = CoinList.AllCoins
                 .Where(c => c.Name.Contains(coinNameNextBox, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
@@ -265,14 +265,14 @@ namespace OOP_NumiStore.Forms
 
             }
 
-            if (coinCountry != null)
-            {
-                filteredCoins = filteredCoins.Where(c => c.Country.Equals(coinCountry, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-
             if (coinMaterials.Count > 0)
             {
                 filteredCoins = filteredCoins.Where(c => coinMaterials.Contains(c.Material)).ToList();
+            }
+
+            if (coinTypes.Count > 0)
+            {
+                filteredCoins = filteredCoins.Where(c => coinTypes.Contains(c.Type)).ToList();
             }
 
             if (coinSeries != null)

@@ -36,6 +36,8 @@ namespace OOP_NumiStore.Forms
             createNewCoinButton = new Button();
             headerListCoinLabel = new Label();
             searchBlockPanel = new Panel();
+            coinTypeLabel = new Label();
+            coinTypesCheckedListBox = new CheckedListBox();
             applySearchButton = new Button();
             label12 = new Label();
             coinDiameterToTextBox = new TextBox();
@@ -45,7 +47,6 @@ namespace OOP_NumiStore.Forms
             coinSeriesLabel = new Label();
             coinSeriesComboBox = new ComboBox();
             coinMaterialLabel = new Label();
-            coinCountryLabel = new Label();
             label6 = new Label();
             coinYearToTextBox = new TextBox();
             label7 = new Label();
@@ -59,7 +60,6 @@ namespace OOP_NumiStore.Forms
             coinNameLabel = new Label();
             coinNameTextBox = new TextBox();
             label1 = new Label();
-            coinCountryComboBox = new ComboBox();
             coinMaterialsCheckedListBox = new CheckedListBox();
             headerPanel = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -129,6 +129,8 @@ namespace OOP_NumiStore.Forms
             // 
             // searchBlockPanel
             // 
+            searchBlockPanel.Controls.Add(coinTypeLabel);
+            searchBlockPanel.Controls.Add(coinTypesCheckedListBox);
             searchBlockPanel.Controls.Add(applySearchButton);
             searchBlockPanel.Controls.Add(label12);
             searchBlockPanel.Controls.Add(coinDiameterToTextBox);
@@ -138,7 +140,6 @@ namespace OOP_NumiStore.Forms
             searchBlockPanel.Controls.Add(coinSeriesLabel);
             searchBlockPanel.Controls.Add(coinSeriesComboBox);
             searchBlockPanel.Controls.Add(coinMaterialLabel);
-            searchBlockPanel.Controls.Add(coinCountryLabel);
             searchBlockPanel.Controls.Add(label6);
             searchBlockPanel.Controls.Add(coinYearToTextBox);
             searchBlockPanel.Controls.Add(label7);
@@ -152,17 +153,35 @@ namespace OOP_NumiStore.Forms
             searchBlockPanel.Controls.Add(coinNameLabel);
             searchBlockPanel.Controls.Add(coinNameTextBox);
             searchBlockPanel.Controls.Add(label1);
-            searchBlockPanel.Controls.Add(coinCountryComboBox);
             searchBlockPanel.Controls.Add(coinMaterialsCheckedListBox);
             searchBlockPanel.Location = new Point(2, 45);
             searchBlockPanel.Name = "searchBlockPanel";
             searchBlockPanel.Size = new Size(241, 515);
             searchBlockPanel.TabIndex = 2;
             // 
+            // coinTypeLabel
+            // 
+            coinTypeLabel.AutoSize = true;
+            coinTypeLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            coinTypeLabel.Location = new Point(33, 282);
+            coinTypeLabel.Name = "coinTypeLabel";
+            coinTypeLabel.Size = new Size(71, 15);
+            coinTypeLabel.TabIndex = 30;
+            coinTypeLabel.Text = "Тип монети";
+            // 
+            // coinTypesCheckedListBox
+            // 
+            coinTypesCheckedListBox.FormattingEnabled = true;
+            coinTypesCheckedListBox.Location = new Point(33, 301);
+            coinTypesCheckedListBox.Name = "coinTypesCheckedListBox";
+            coinTypesCheckedListBox.Size = new Size(175, 40);
+            coinTypesCheckedListBox.Sorted = true;
+            coinTypesCheckedListBox.TabIndex = 31;
+            // 
             // applySearchButton
             // 
             applySearchButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            applySearchButton.Location = new Point(33, 423);
+            applySearchButton.Location = new Point(33, 443);
             applySearchButton.Name = "applySearchButton";
             applySearchButton.Size = new Size(175, 41);
             applySearchButton.TabIndex = 27;
@@ -173,7 +192,7 @@ namespace OOP_NumiStore.Forms
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(125, 391);
+            label12.Location = new Point(125, 411);
             label12.Name = "label12";
             label12.Size = new Size(20, 15);
             label12.TabIndex = 26;
@@ -181,7 +200,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinDiameterToTextBox
             // 
-            coinDiameterToTextBox.Location = new Point(153, 388);
+            coinDiameterToTextBox.Location = new Point(153, 408);
             coinDiameterToTextBox.Name = "coinDiameterToTextBox";
             coinDiameterToTextBox.Size = new Size(55, 23);
             coinDiameterToTextBox.TabIndex = 25;
@@ -189,7 +208,7 @@ namespace OOP_NumiStore.Forms
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(33, 391);
+            label13.Location = new Point(33, 411);
             label13.Name = "label13";
             label13.Size = new Size(22, 15);
             label13.TabIndex = 24;
@@ -199,7 +218,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinDiameterLabel.AutoSize = true;
             coinDiameterLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinDiameterLabel.Location = new Point(33, 370);
+            coinDiameterLabel.Location = new Point(33, 390);
             coinDiameterLabel.Name = "coinDiameterLabel";
             coinDiameterLabel.Size = new Size(52, 15);
             coinDiameterLabel.TabIndex = 23;
@@ -207,7 +226,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinDiameterFromTextBox
             // 
-            coinDiameterFromTextBox.Location = new Point(61, 388);
+            coinDiameterFromTextBox.Location = new Point(61, 408);
             coinDiameterFromTextBox.Name = "coinDiameterFromTextBox";
             coinDiameterFromTextBox.Size = new Size(55, 23);
             coinDiameterFromTextBox.TabIndex = 22;
@@ -216,7 +235,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinSeriesLabel.AutoSize = true;
             coinSeriesLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinSeriesLabel.Location = new Point(33, 326);
+            coinSeriesLabel.Location = new Point(33, 346);
             coinSeriesLabel.Name = "coinSeriesLabel";
             coinSeriesLabel.Size = new Size(36, 15);
             coinSeriesLabel.TabIndex = 20;
@@ -227,7 +246,7 @@ namespace OOP_NumiStore.Forms
             coinSeriesComboBox.DropDownHeight = 90;
             coinSeriesComboBox.FormattingEnabled = true;
             coinSeriesComboBox.IntegralHeight = false;
-            coinSeriesComboBox.Location = new Point(33, 344);
+            coinSeriesComboBox.Location = new Point(33, 364);
             coinSeriesComboBox.MaxDropDownItems = 6;
             coinSeriesComboBox.Name = "coinSeriesComboBox";
             coinSeriesComboBox.Size = new Size(175, 23);
@@ -238,21 +257,11 @@ namespace OOP_NumiStore.Forms
             // 
             coinMaterialLabel.AutoSize = true;
             coinMaterialLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinMaterialLabel.Location = new Point(33, 228);
+            coinMaterialLabel.Location = new Point(33, 184);
             coinMaterialLabel.Name = "coinMaterialLabel";
             coinMaterialLabel.Size = new Size(58, 15);
             coinMaterialLabel.TabIndex = 18;
             coinMaterialLabel.Text = "Матеріал";
-            // 
-            // coinCountryLabel
-            // 
-            coinCountryLabel.AutoSize = true;
-            coinCountryLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinCountryLabel.Location = new Point(33, 184);
-            coinCountryLabel.Name = "coinCountryLabel";
-            coinCountryLabel.Size = new Size(43, 15);
-            coinCountryLabel.TabIndex = 16;
-            coinCountryLabel.Text = "Країна";
             // 
             // label6
             // 
@@ -366,24 +375,10 @@ namespace OOP_NumiStore.Forms
             label1.TabIndex = 2;
             label1.Text = "Пошук та фільтри";
             // 
-            // coinCountryComboBox
-            // 
-            coinCountryComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            coinCountryComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            coinCountryComboBox.DropDownHeight = 150;
-            coinCountryComboBox.FormattingEnabled = true;
-            coinCountryComboBox.IntegralHeight = false;
-            coinCountryComboBox.Location = new Point(33, 202);
-            coinCountryComboBox.MaxDropDownItems = 10;
-            coinCountryComboBox.Name = "coinCountryComboBox";
-            coinCountryComboBox.Size = new Size(175, 23);
-            coinCountryComboBox.Sorted = true;
-            coinCountryComboBox.TabIndex = 28;
-            // 
             // coinMaterialsCheckedListBox
             // 
             coinMaterialsCheckedListBox.FormattingEnabled = true;
-            coinMaterialsCheckedListBox.Location = new Point(33, 247);
+            coinMaterialsCheckedListBox.Location = new Point(33, 203);
             coinMaterialsCheckedListBox.Name = "coinMaterialsCheckedListBox";
             coinMaterialsCheckedListBox.Size = new Size(175, 76);
             coinMaterialsCheckedListBox.Sorted = true;
@@ -453,15 +448,15 @@ namespace OOP_NumiStore.Forms
             headName.TabIndex = 1;
             headName.Text = "NumiStore";
             // 
-            // MainAdminForm
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(804, 560);
+            ClientSize = new Size(804, 545);
             Controls.Add(headerPanel);
             Controls.Add(searchBlockPanel);
             Controls.Add(coinListBlockPanel);
-            Name = "MainAdminForm";
+            Name = "MainForm";
             Text = "Головна - Адміністративна панель";
             FormClosed += MainForm_FormClosed;
             coinListBlockPanel.ResumeLayout(false);
@@ -496,7 +491,6 @@ namespace OOP_NumiStore.Forms
         private Label coinYearLabel;
         protected TextBox coinYearFromTextBox;
         private Label coinMaterialLabel;
-        private Label coinCountryLabel;
         private ComboBox comboBox1;
         private Label coinSeriesLabel;
         private ComboBox coinSeriesComboBox;
@@ -506,7 +500,6 @@ namespace OOP_NumiStore.Forms
         private Label coinDiameterLabel;
         protected TextBox coinDiameterFromTextBox;
         private Button applySearchButton;
-        private ComboBox coinCountryComboBox;
         private CheckedListBox coinMaterialsCheckedListBox;
         private Button createNewCoinButton;
         private Panel mainHeaderPanel;
@@ -515,5 +508,7 @@ namespace OOP_NumiStore.Forms
         private Button logoutButton;
         private TableLayoutPanel tableLayoutPanel1;
         private LinkLabel userLoginLinkLabel;
+        private Label coinTypeLabel;
+        private CheckedListBox coinTypesCheckedListBox;
     }
 }
