@@ -1,6 +1,6 @@
 ﻿namespace OOP_NumiStore.Forms
 {
-    partial class MainCustomerForm
+    partial class ViewDetailsCoinForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // MainCustomerForm
+            // ViewDetailsCoinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "MainCustomerForm";
-            Text = "MainCustomerForm";
+            ClientSize = new Size(651, 519);
+            Name = "ViewDetailsCoinForm";
+            Text = "Детальна інформація про монету";
             ResumeLayout(false);
         }
 

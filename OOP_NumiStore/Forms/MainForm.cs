@@ -6,24 +6,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using OOP_NumiStore.Models;
 
 namespace OOP_NumiStore.Forms
 {
-    public partial class MainAdminForm : Form
+    public partial class MainForm : Form
     {
         public CoinsList CoinList { get; private set; } = new CoinsList();
         User currentUser { get; set; }
+        static ToolTip toolTip = new();
 
-        public MainAdminForm()
+        public MainForm()
         {
             currentUser = UserSession.currentUser;
             InitializeComponent();
             userLoginLinkLabel.Text = $"{currentUser.Name} {currentUser.Surname}".Trim();
-            new ToolTip().SetToolTip(userLoginLinkLabel, "Налаштування акаунту");
+            toolTip.SetToolTip(userLoginLinkLabel, "Налаштування акаунту");
 
+            createNewCoinButton.Visible = currentUser is Admin;
             loadCoins();
             updateSearchAndFilterBlock();
         }
@@ -38,7 +39,7 @@ namespace OOP_NumiStore.Forms
 
             foreach (Coin coin in coins)
             {
-                BaseCoinBox adminListCoin = new BaseCoinBox(currentUser)
+                BaseCoinBox listCoin = new BaseCoinBox(currentUser)
                 {
                     Coin = coin,
                     Width = flowLayoutPanel1.Width - 20,
@@ -51,13 +52,15 @@ namespace OOP_NumiStore.Forms
 
                 if (isFirstControl)
                 {
-                    adminListCoin.Margin = new Padding(adminListCoin.Margin.Left, 0, adminListCoin.Margin.Right, adminListCoin.Margin.Bottom);
+                    listCoin.Margin = new Padding(listCoin.Margin.Left, 0, listCoin.Margin.Right, listCoin.Margin.Bottom);
                     isFirstControl = false;
                 }
 
-                adminListCoin.EditCoinButtonClicked += CoinBox_EditButtonClicked;
-                adminListCoin.DeleteCoinButtonClicked += CoinBox_DeleteButtonClicked;
-                flowLayoutPanel1.Controls.Add(adminListCoin);
+                listCoin.EditCoinButtonClicked += CoinBox_EditButtonClicked;
+                listCoin.DeleteCoinButtonClicked += CoinBox_DeleteButtonClicked;
+                listCoin.CoinDetailsButtonClicked += CoinBox_DetailsButtonClicked;
+                listCoin.CoinBasketButtonClicked += CoinBox_BasketButtonClicked;
+                flowLayoutPanel1.Controls.Add(listCoin);
             }
 
             if (flowLayoutPanel1.Controls.Count == 0)
@@ -84,6 +87,33 @@ namespace OOP_NumiStore.Forms
             }
         }
 
+        private void CoinBox_DeleteButtonClicked(object? sender, Coin coin)
+        {
+            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету \"{coin.Name}\"?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                CoinList.RemoveCoin(coin);
+                loadCoins();
+                updateSearchAndFilterBlock();
+            }
+        }
+
+        private void CoinBox_DetailsButtonClicked(object? sender, Coin coin)
+        {
+            //ViewDetailsCoinForm modalForm = new(coin);
+            ViewDetailsCoinForm modalForm = new();
+            modalForm.ShowDialog();
+        }
+
+        private void CoinBox_BasketButtonClicked(object? sender, Coin coin)
+        {
+            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете додати монету \"{coin.Name}\" до кошика?", "Додавання монети до кошика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show($"Монета \"{coin.Name}\" додана до кошика.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void createNewCoinButton_Click(object sender, EventArgs e)
         {
             CreateCoinForm createCoinForm = new();
@@ -92,17 +122,6 @@ namespace OOP_NumiStore.Forms
             {
                 CoinList.AddCoin(createCoinForm.newCoin);
                 CoinList.SaveCoinsToFile();
-                loadCoins();
-                updateSearchAndFilterBlock();
-            }
-        }
-
-        private void CoinBox_DeleteButtonClicked(object? sender, Coin coin)
-        {
-            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете видалити монету \"{coin.Name}\"?", "Видалення монети", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                CoinList.RemoveCoin(coin);
                 loadCoins();
                 updateSearchAndFilterBlock();
             }
@@ -197,7 +216,6 @@ namespace OOP_NumiStore.Forms
 
                 if (priceFrom.HasValue) { filteredCoins = filteredCoins.Where(c => c.Price >= priceFrom.Value).ToList(); }
                 if (priceTo.HasValue) { filteredCoins = filteredCoins.Where(c => c.Price <= priceTo.Value).ToList(); }
-
             }
 
 
@@ -315,7 +333,7 @@ namespace OOP_NumiStore.Forms
             //}
         }
 
-        private void InvalidTextBox(System.Windows.Forms.TextBox curTextBox, string error = "")
+        private void InvalidTextBox(TextBox curTextBox, string error = "")
         {
             curTextBox.BackColor = Color.LightPink;
             MessageBox.Show(error, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -38,8 +38,8 @@
             coinDeleteButton = new Button();
             adminPanelButtons = new Panel();
             customerPanelButtons = new Panel();
-            button1 = new Button();
-            button2 = new Button();
+            coinBasketButton = new Button();
+            coinDetailsButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureCoin).BeginInit();
             adminPanelButtons.SuspendLayout();
             customerPanelButtons.SuspendLayout();
@@ -70,7 +70,7 @@
             coinEditButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             coinEditButton.BackColor = Color.WhiteSmoke;
             coinEditButton.Cursor = Cursors.Hand;
-            coinEditButton.Location = new Point(32, 67);
+            coinEditButton.Location = new Point(57, 67);
             coinEditButton.Name = "coinEditButton";
             coinEditButton.Size = new Size(77, 25);
             coinEditButton.TabIndex = 2;
@@ -110,7 +110,7 @@
             // 
             coinDeleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             coinDeleteButton.Cursor = Cursors.Hand;
-            coinDeleteButton.Location = new Point(32, 26);
+            coinDeleteButton.Location = new Point(57, 26);
             coinDeleteButton.Name = "coinDeleteButton";
             coinDeleteButton.Size = new Size(77, 25);
             coinDeleteButton.TabIndex = 6;
@@ -123,43 +123,45 @@
             adminPanelButtons.Anchor = AnchorStyles.Right;
             adminPanelButtons.Controls.Add(coinEditButton);
             adminPanelButtons.Controls.Add(coinDeleteButton);
-            adminPanelButtons.Location = new Point(550, 0);
+            adminPanelButtons.Location = new Point(525, 0);
             adminPanelButtons.Name = "adminPanelButtons";
-            adminPanelButtons.Size = new Size(140, 118);
+            adminPanelButtons.Size = new Size(165, 118);
             adminPanelButtons.TabIndex = 7;
             // 
             // customerPanelButtons
             // 
             customerPanelButtons.Anchor = AnchorStyles.Right;
-            customerPanelButtons.Controls.Add(button1);
-            customerPanelButtons.Controls.Add(button2);
+            customerPanelButtons.Controls.Add(coinBasketButton);
+            customerPanelButtons.Controls.Add(coinDetailsButton);
             customerPanelButtons.Location = new Point(547, 0);
             customerPanelButtons.Name = "customerPanelButtons";
             customerPanelButtons.Size = new Size(140, 118);
             customerPanelButtons.TabIndex = 8;
             // 
-            // button1
+            // coinBasketButton
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackColor = Color.WhiteSmoke;
-            button1.Cursor = Cursors.Hand;
-            button1.Location = new Point(32, 67);
-            button1.Name = "button1";
-            button1.Size = new Size(84, 25);
-            button1.TabIndex = 7;
-            button1.Text = "В кошик";
-            button1.UseVisualStyleBackColor = true;
+            coinBasketButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            coinBasketButton.BackColor = Color.WhiteSmoke;
+            coinBasketButton.Cursor = Cursors.Hand;
+            coinBasketButton.Location = new Point(32, 67);
+            coinBasketButton.Name = "coinBasketButton";
+            coinBasketButton.Size = new Size(84, 25);
+            coinBasketButton.TabIndex = 7;
+            coinBasketButton.Text = "В кошик";
+            coinBasketButton.UseVisualStyleBackColor = true;
+            coinBasketButton.Click += coinBasketButton_Click;
             // 
-            // button2
+            // coinDetailsButton
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.Cursor = Cursors.Hand;
-            button2.Location = new Point(32, 26);
-            button2.Name = "button2";
-            button2.Size = new Size(84, 25);
-            button2.TabIndex = 8;
-            button2.Text = "Детальніше";
-            button2.UseVisualStyleBackColor = true;
+            coinDetailsButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            coinDetailsButton.Cursor = Cursors.Hand;
+            coinDetailsButton.Location = new Point(32, 26);
+            coinDetailsButton.Name = "coinDetailsButton";
+            coinDetailsButton.Size = new Size(84, 25);
+            coinDetailsButton.TabIndex = 8;
+            coinDetailsButton.Text = "Детальніше";
+            coinDetailsButton.UseVisualStyleBackColor = true;
+            coinDetailsButton.Click += coinDetailsButton_Click;
             // 
             // BaseCoinBox
             // 
@@ -167,12 +169,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.WhiteSmoke;
+            Controls.Add(adminPanelButtons);
             Controls.Add(countryCoinText);
             Controls.Add(yearCoinText);
             Controls.Add(pictureCoin);
             Controls.Add(priceCoinText);
             Controls.Add(coinTitle);
-            Controls.Add(adminPanelButtons);
             Controls.Add(customerPanelButtons);
             Margin = new Padding(0, 8, 0, 0);
             Name = "BaseCoinBox";
@@ -193,8 +195,8 @@
         private Label yearCoinText;
         private Label countryCoinText;
         private Button coinDeleteButton;
-        private Button button1;
-        private Button button2;
+        private Button coinBasketButton;
+        private Button coinDetailsButton;
         public Panel customerPanelButtons;
         public Panel adminPanelButtons;
     }

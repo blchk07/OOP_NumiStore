@@ -7,17 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OOP_NumiStore.Models;
-
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace OOP_NumiStore.Forms
 {
-    public partial class MainCustomerForm : Form
+    public partial class ViewDetailsCoinForm: Form
     {
-        public MainCustomerForm()
+        public ViewDetailsCoinForm()
         {
             InitializeComponent();
         }

@@ -2,7 +2,7 @@
 
 namespace OOP_NumiStore.Forms
 {
-    partial class MainAdminForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -162,7 +162,7 @@ namespace OOP_NumiStore.Forms
             // applySearchButton
             // 
             applySearchButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            applySearchButton.Location = new Point(31, 464);
+            applySearchButton.Location = new Point(33, 423);
             applySearchButton.Name = "applySearchButton";
             applySearchButton.Size = new Size(175, 41);
             applySearchButton.TabIndex = 27;
@@ -173,7 +173,7 @@ namespace OOP_NumiStore.Forms
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(123, 432);
+            label12.Location = new Point(125, 391);
             label12.Name = "label12";
             label12.Size = new Size(20, 15);
             label12.TabIndex = 26;
@@ -181,7 +181,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinDiameterToTextBox
             // 
-            coinDiameterToTextBox.Location = new Point(151, 429);
+            coinDiameterToTextBox.Location = new Point(153, 388);
             coinDiameterToTextBox.Name = "coinDiameterToTextBox";
             coinDiameterToTextBox.Size = new Size(55, 23);
             coinDiameterToTextBox.TabIndex = 25;
@@ -189,7 +189,7 @@ namespace OOP_NumiStore.Forms
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(31, 432);
+            label13.Location = new Point(33, 391);
             label13.Name = "label13";
             label13.Size = new Size(22, 15);
             label13.TabIndex = 24;
@@ -199,7 +199,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinDiameterLabel.AutoSize = true;
             coinDiameterLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinDiameterLabel.Location = new Point(31, 411);
+            coinDiameterLabel.Location = new Point(33, 370);
             coinDiameterLabel.Name = "coinDiameterLabel";
             coinDiameterLabel.Size = new Size(52, 15);
             coinDiameterLabel.TabIndex = 23;
@@ -207,7 +207,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinDiameterFromTextBox
             // 
-            coinDiameterFromTextBox.Location = new Point(59, 429);
+            coinDiameterFromTextBox.Location = new Point(61, 388);
             coinDiameterFromTextBox.Name = "coinDiameterFromTextBox";
             coinDiameterFromTextBox.Size = new Size(55, 23);
             coinDiameterFromTextBox.TabIndex = 22;
@@ -216,7 +216,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinSeriesLabel.AutoSize = true;
             coinSeriesLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinSeriesLabel.Location = new Point(31, 358);
+            coinSeriesLabel.Location = new Point(33, 326);
             coinSeriesLabel.Name = "coinSeriesLabel";
             coinSeriesLabel.Size = new Size(36, 15);
             coinSeriesLabel.TabIndex = 20;
@@ -227,7 +227,7 @@ namespace OOP_NumiStore.Forms
             coinSeriesComboBox.DropDownHeight = 90;
             coinSeriesComboBox.FormattingEnabled = true;
             coinSeriesComboBox.IntegralHeight = false;
-            coinSeriesComboBox.Location = new Point(31, 376);
+            coinSeriesComboBox.Location = new Point(33, 344);
             coinSeriesComboBox.MaxDropDownItems = 6;
             coinSeriesComboBox.Name = "coinSeriesComboBox";
             coinSeriesComboBox.Size = new Size(175, 23);
@@ -238,7 +238,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinMaterialLabel.AutoSize = true;
             coinMaterialLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinMaterialLabel.Location = new Point(31, 256);
+            coinMaterialLabel.Location = new Point(33, 228);
             coinMaterialLabel.Name = "coinMaterialLabel";
             coinMaterialLabel.Size = new Size(58, 15);
             coinMaterialLabel.TabIndex = 18;
@@ -248,7 +248,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinCountryLabel.AutoSize = true;
             coinCountryLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinCountryLabel.Location = new Point(31, 203);
+            coinCountryLabel.Location = new Point(33, 184);
             coinCountryLabel.Name = "coinCountryLabel";
             coinCountryLabel.Size = new Size(43, 15);
             coinCountryLabel.TabIndex = 16;
@@ -257,7 +257,7 @@ namespace OOP_NumiStore.Forms
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(123, 170);
+            label6.Location = new Point(125, 161);
             label6.Name = "label6";
             label6.Size = new Size(20, 15);
             label6.TabIndex = 14;
@@ -265,7 +265,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinYearToTextBox
             // 
-            coinYearToTextBox.Location = new Point(151, 167);
+            coinYearToTextBox.Location = new Point(153, 158);
             coinYearToTextBox.Name = "coinYearToTextBox";
             coinYearToTextBox.Size = new Size(55, 23);
             coinYearToTextBox.TabIndex = 13;
@@ -273,7 +273,7 @@ namespace OOP_NumiStore.Forms
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(31, 170);
+            label7.Location = new Point(33, 161);
             label7.Name = "label7";
             label7.Size = new Size(22, 15);
             label7.TabIndex = 12;
@@ -283,7 +283,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinYearLabel.AutoSize = true;
             coinYearLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinYearLabel.Location = new Point(31, 149);
+            coinYearLabel.Location = new Point(33, 140);
             coinYearLabel.Name = "coinYearLabel";
             coinYearLabel.Size = new Size(71, 15);
             coinYearLabel.TabIndex = 11;
@@ -291,7 +291,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinYearFromTextBox
             // 
-            coinYearFromTextBox.Location = new Point(59, 167);
+            coinYearFromTextBox.Location = new Point(61, 158);
             coinYearFromTextBox.Name = "coinYearFromTextBox";
             coinYearFromTextBox.Size = new Size(55, 23);
             coinYearFromTextBox.TabIndex = 10;
@@ -299,7 +299,7 @@ namespace OOP_NumiStore.Forms
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(123, 117);
+            label5.Location = new Point(125, 117);
             label5.Name = "label5";
             label5.Size = new Size(20, 15);
             label5.TabIndex = 9;
@@ -307,7 +307,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinPriceToTextBox
             // 
-            coinPriceToTextBox.Location = new Point(151, 114);
+            coinPriceToTextBox.Location = new Point(153, 114);
             coinPriceToTextBox.Name = "coinPriceToTextBox";
             coinPriceToTextBox.Size = new Size(55, 23);
             coinPriceToTextBox.TabIndex = 8;
@@ -315,7 +315,7 @@ namespace OOP_NumiStore.Forms
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(31, 117);
+            label4.Location = new Point(33, 117);
             label4.Name = "label4";
             label4.Size = new Size(22, 15);
             label4.TabIndex = 7;
@@ -325,7 +325,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinPriceLabel.AutoSize = true;
             coinPriceLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinPriceLabel.Location = new Point(31, 96);
+            coinPriceLabel.Location = new Point(33, 96);
             coinPriceLabel.Name = "coinPriceLabel";
             coinPriceLabel.Size = new Size(32, 15);
             coinPriceLabel.TabIndex = 6;
@@ -333,7 +333,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinPriceFromTextBox
             // 
-            coinPriceFromTextBox.Location = new Point(59, 114);
+            coinPriceFromTextBox.Location = new Point(61, 114);
             coinPriceFromTextBox.Name = "coinPriceFromTextBox";
             coinPriceFromTextBox.Size = new Size(55, 23);
             coinPriceFromTextBox.TabIndex = 5;
@@ -342,7 +342,7 @@ namespace OOP_NumiStore.Forms
             // 
             coinNameLabel.AutoSize = true;
             coinNameLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            coinNameLabel.Location = new Point(31, 43);
+            coinNameLabel.Location = new Point(33, 52);
             coinNameLabel.Name = "coinNameLabel";
             coinNameLabel.Size = new Size(85, 15);
             coinNameLabel.TabIndex = 4;
@@ -350,7 +350,7 @@ namespace OOP_NumiStore.Forms
             // 
             // coinNameTextBox
             // 
-            coinNameTextBox.Location = new Point(31, 61);
+            coinNameTextBox.Location = new Point(33, 70);
             coinNameTextBox.Name = "coinNameTextBox";
             coinNameTextBox.Size = new Size(175, 23);
             coinNameTextBox.TabIndex = 3;
@@ -360,7 +360,7 @@ namespace OOP_NumiStore.Forms
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(33, 9);
+            label1.Location = new Point(33, 13);
             label1.Name = "label1";
             label1.Size = new Size(170, 25);
             label1.TabIndex = 2;
@@ -373,7 +373,7 @@ namespace OOP_NumiStore.Forms
             coinCountryComboBox.DropDownHeight = 150;
             coinCountryComboBox.FormattingEnabled = true;
             coinCountryComboBox.IntegralHeight = false;
-            coinCountryComboBox.Location = new Point(31, 221);
+            coinCountryComboBox.Location = new Point(33, 202);
             coinCountryComboBox.MaxDropDownItems = 10;
             coinCountryComboBox.Name = "coinCountryComboBox";
             coinCountryComboBox.Size = new Size(175, 23);
@@ -383,7 +383,7 @@ namespace OOP_NumiStore.Forms
             // coinMaterialsCheckedListBox
             // 
             coinMaterialsCheckedListBox.FormattingEnabled = true;
-            coinMaterialsCheckedListBox.Location = new Point(31, 275);
+            coinMaterialsCheckedListBox.Location = new Point(33, 247);
             coinMaterialsCheckedListBox.Name = "coinMaterialsCheckedListBox";
             coinMaterialsCheckedListBox.Size = new Size(175, 76);
             coinMaterialsCheckedListBox.Sorted = true;
@@ -462,7 +462,7 @@ namespace OOP_NumiStore.Forms
             Controls.Add(searchBlockPanel);
             Controls.Add(coinListBlockPanel);
             Name = "MainAdminForm";
-            Text = "Головна";
+            Text = "Головна - Адміністративна панель";
             FormClosed += MainForm_FormClosed;
             coinListBlockPanel.ResumeLayout(false);
             mainHeaderPanel.ResumeLayout(false);

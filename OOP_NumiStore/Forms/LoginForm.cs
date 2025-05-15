@@ -27,20 +27,10 @@ namespace OOP_NumiStore
 
             if (currentUser != null)
             {
-                if (currentUser is Admin)
-                {
-                    UserSession.Login(currentUser);
-                    MainAdminForm mainAdminForm = new MainAdminForm();
-                    mainAdminForm.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    UserSession.Login(currentUser);
-                    MainCustomerForm mainCustomerForm = new MainCustomerForm();
-                    mainCustomerForm.Show();
-                    this.Hide();
-                }
+                UserSession.Login(currentUser);
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+                this.Hide();
             }
             else
             {
