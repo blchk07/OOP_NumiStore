@@ -29,6 +29,18 @@ namespace OOP_NumiStore.Models
             ReadCustomersFromFile();
         }
 
+        public bool UpdateCustomers(Customer customer)
+        {
+            int index = Customers.FindIndex(c => c.Login == customer.Login);
+            if (index != -1)
+            {
+                Customers[index] = customer;
+                SaveToFile(customerPath, Customers);
+                return true;
+            }
+            return false;
+        }
+
         public bool EditUser(User user, string newPassword, string newEmail, string newName, string newSurname)
         {
             if (user == null) return false;

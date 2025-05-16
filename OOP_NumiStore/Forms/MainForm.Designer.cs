@@ -62,10 +62,12 @@ namespace OOP_NumiStore.Forms
             label1 = new Label();
             coinMaterialsCheckedListBox = new CheckedListBox();
             headerPanel = new Panel();
+            button2 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             userLoginLinkLabel = new LinkLabel();
             logoutButton = new Button();
             headName = new Label();
+            button1 = new Button();
             coinListBlockPanel.SuspendLayout();
             mainHeaderPanel.SuspendLayout();
             searchBlockPanel.SuspendLayout();
@@ -388,28 +390,42 @@ namespace OOP_NumiStore.Forms
             // 
             headerPanel.BackColor = Color.White;
             headerPanel.BorderStyle = BorderStyle.FixedSingle;
+            headerPanel.Controls.Add(button2);
             headerPanel.Controls.Add(tableLayoutPanel1);
             headerPanel.Controls.Add(headName);
+            headerPanel.Controls.Add(button1);
             headerPanel.Dock = DockStyle.Top;
             headerPanel.Location = new Point(0, 0);
             headerPanel.Name = "headerPanel";
             headerPanel.Size = new Size(804, 46);
             headerPanel.TabIndex = 3;
             // 
+            // button2
+            // 
+            button2.Cursor = Cursors.Hand;
+            button2.Location = new Point(341, 11);
+            button2.Name = "button2";
+            button2.Size = new Size(91, 23);
+            button2.TabIndex = 7;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 71.08014F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.91986F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.1451645F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.85484F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 69F));
             tableLayoutPanel1.Controls.Add(userLoginLinkLabel, 0, 0);
             tableLayoutPanel1.Controls.Add(logoutButton, 1, 0);
-            tableLayoutPanel1.Location = new Point(496, 8);
+            tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
+            tableLayoutPanel1.Location = new Point(548, 8);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(287, 29);
+            tableLayoutPanel1.Size = new Size(248, 29);
             tableLayoutPanel1.TabIndex = 4;
             // 
             // userLoginLinkLabel
@@ -417,7 +433,7 @@ namespace OOP_NumiStore.Forms
             userLoginLinkLabel.Anchor = AnchorStyles.Right;
             userLoginLinkLabel.AutoSize = true;
             userLoginLinkLabel.LinkColor = Color.Black;
-            userLoginLinkLabel.Location = new Point(142, 7);
+            userLoginLinkLabel.Location = new Point(107, 7);
             userLoginLinkLabel.Name = "userLoginLinkLabel";
             userLoginLinkLabel.Size = new Size(59, 15);
             userLoginLinkLabel.TabIndex = 5;
@@ -429,9 +445,9 @@ namespace OOP_NumiStore.Forms
             // 
             logoutButton.Anchor = AnchorStyles.Right;
             logoutButton.Cursor = Cursors.Hand;
-            logoutButton.Location = new Point(209, 3);
+            logoutButton.Location = new Point(181, 3);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(75, 23);
+            logoutButton.Size = new Size(64, 23);
             logoutButton.TabIndex = 2;
             logoutButton.Text = "Вийти";
             logoutButton.UseVisualStyleBackColor = true;
@@ -448,11 +464,21 @@ namespace OOP_NumiStore.Forms
             headName.TabIndex = 1;
             headName.Text = "NumiStore";
             // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Location = new Point(245, 11);
+            button1.Name = "button1";
+            button1.Size = new Size(90, 23);
+            button1.TabIndex = 6;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(804, 545);
+            ClientSize = new Size(804, 562);
             Controls.Add(headerPanel);
             Controls.Add(searchBlockPanel);
             Controls.Add(coinListBlockPanel);
@@ -510,5 +536,7 @@ namespace OOP_NumiStore.Forms
         private LinkLabel userLoginLinkLabel;
         private Label coinTypeLabel;
         private CheckedListBox coinTypesCheckedListBox;
+        private Button button1;
+        private Button button2;
     }
 }

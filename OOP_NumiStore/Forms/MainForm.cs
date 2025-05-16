@@ -24,7 +24,23 @@ namespace OOP_NumiStore.Forms
             userLoginLinkLabel.Text = $"{currentUser.Name} {currentUser.Surname}".Trim();
             toolTip.SetToolTip(userLoginLinkLabel, "Налаштування акаунту");
 
+            this.Text = currentUser is Customer ? "NumiStore - Головна сторінка" : "Адмін NumiStore - Головна сторінка";
             createNewCoinButton.Visible = currentUser is Admin;
+
+            if (currentUser is Admin)
+            {
+                button1.Text = "Замовлення";
+                button1.Click += ordersAdminButtonClick;
+                button2.Visible = false;
+            }
+            else if (currentUser is Customer)
+            {
+                button1.Text = "Кошик";
+                button1.Click += basketCustomerButtonClick;
+                button2.Visible = true;
+                button2.Text = "Замовлення";
+            }
+
             loadCoins();
             updateSearchAndFilterBlock();
         }
@@ -101,18 +117,29 @@ namespace OOP_NumiStore.Forms
 
         private void CoinBox_DetailsButtonClicked(object? sender, CoinBase coin)
         {
-            //ViewDetailsCoinForm modalForm = new(coin);
-            ViewDetailsCoinForm modalForm = new();
+            ViewDetailsCoinForm modalForm = new(coin);
             modalForm.ShowDialog();
         }
 
         private void CoinBox_BasketButtonClicked(object? sender, CoinBase coin)
         {
-            DialogResult result = MessageBox.Show($"Ви впевнені, що хочете додати монету \"{coin.Name}\" до кошика?", "Додавання монети до кошика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                MessageBox.Show($"Монета \"{coin.Name}\" додана до кошика.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            AddCoinToBasket addCoinToBasket = new(coin);
+            addCoinToBasket.ShowDialog();
+            //if (addCoinToBasket.isAdded)
+            //{
+            //    MessageBox.Show($"Монета \"{coin.Name}\" додана до кошика!", "Успішно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+        }
+
+        private void ordersAdminButtonClick(object? sender, EventArgs e)
+        {
+
+        }
+
+        private void basketCustomerButtonClick(object? sender, EventArgs e)
+        {
+            BasketForm basketForm = new();
+            basketForm.ShowDialog();
         }
 
         private void createNewCoinButton_Click(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace OOP_NumiStore
         [Category("Custom Props")]
         public string AvailableCountCoin
         {
-            set { availableCountText.Text = $"Кількість: {value}"; }
+            set { availableCountText.Text = $"Кількість: {value} шт."; }
         }
 
         [Category("Custom props")]
