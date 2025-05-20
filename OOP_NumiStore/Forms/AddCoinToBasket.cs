@@ -30,6 +30,23 @@ namespace OOP_NumiStore.Forms
             oneCoinPriceLabel.Text = currentCoin.Price.ToString() + " грн.";
             resultLabel.Text = $"Загалом: {selectedCountNumeric.Value} x {currentCoin.Price} = " + (selectedCountNumeric.Value * currentCoin.Price).ToString() + " грн.";
 
+            if (!string.IsNullOrEmpty(currentCoin.ImagePath) && File.Exists(currentCoin.ImagePath))
+            {
+                try
+                {
+                    coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
+                    coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                catch
+                {
+                    coinPictureBox.Image = null;
+                }
+            }
+            else
+            {
+                coinPictureBox.Image = null;
+            }
+
             selectedCountNumeric.TextChanged += selectedCountNumeric_TextChanged;
         }
 

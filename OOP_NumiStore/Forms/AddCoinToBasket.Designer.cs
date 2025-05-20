@@ -50,6 +50,7 @@
             coinPictureBox.Location = new Point(23, 25);
             coinPictureBox.Name = "coinPictureBox";
             coinPictureBox.Size = new Size(148, 148);
+            coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             coinPictureBox.TabIndex = 0;
             coinPictureBox.TabStop = false;
             // 

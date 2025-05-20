@@ -22,5 +22,26 @@ namespace OOP_NumiStore.Models
             }
             return true;
         }
+        public bool EditBasketItem(BasketItem item)
+        {
+            var existingItem = Basket.FirstOrDefault(b => b.CoinId == item.CoinId);
+            if (existingItem != null)
+            {
+                existingItem.Quantity = item.Quantity;
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteBasketItem(BasketItem item)
+        {
+            return Basket.Remove(item);
+        }
+
+        public bool ClearBasket()
+        {
+            Basket.Clear();
+            return true;
+        }
     }
 }

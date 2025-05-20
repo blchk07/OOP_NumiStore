@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseCoinBox));
             coinTitle = new Label();
             priceCoinText = new Label();
             coinEditButton = new Button();
@@ -83,10 +82,10 @@
             // pictureCoin
             // 
             pictureCoin.BackColor = Color.Gray;
-            pictureCoin.Image = (Image)resources.GetObject("pictureCoin.Image");
             pictureCoin.Location = new Point(0, 0);
             pictureCoin.Name = "pictureCoin";
             pictureCoin.Size = new Size(118, 118);
+            pictureCoin.SizeMode = PictureBoxSizeMode.Zoom;
             pictureCoin.TabIndex = 3;
             pictureCoin.TabStop = false;
             // 
@@ -180,8 +179,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.WhiteSmoke;
-            Controls.Add(availableCountText);
             Controls.Add(adminPanelButtons);
+            Controls.Add(availableCountText);
             Controls.Add(typeCoinText);
             Controls.Add(yearCoinText);
             Controls.Add(pictureCoin);

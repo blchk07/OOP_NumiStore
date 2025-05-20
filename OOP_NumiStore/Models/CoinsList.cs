@@ -38,6 +38,30 @@ namespace OOP_NumiStore.Models
             }
         }
 
+        public void EditCoin(CoinBase coin)
+        {
+            if (coin is RegularCoin regular)
+            {
+                var existing = RegularCoins.FirstOrDefault(c => c.Id == regular.Id);
+                if (existing != null)
+                {
+                    int index = RegularCoins.IndexOf(existing);
+                    RegularCoins[index] = regular;
+                    SaveRegularCoins();
+                }
+            }
+            else if (coin is CollectibleCoin collectible)
+            {
+                var existing = CollectibleCoins.FirstOrDefault(c => c.Id == collectible.Id);
+                if (existing != null)
+                {
+                    int index = CollectibleCoins.IndexOf(existing);
+                    CollectibleCoins[index] = collectible;
+                    SaveCollectibleCoins();
+                }
+            }
+        }
+
         public void RemoveCoin(CoinBase coin)
         {
             if (coin is RegularCoin regular)

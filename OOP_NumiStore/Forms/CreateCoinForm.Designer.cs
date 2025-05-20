@@ -32,7 +32,6 @@
             createCoinButton = new Button();
             panel1 = new Panel();
             coinPictureBox = new PictureBox();
-            coinAddPhotoButton = new Button();
             label11 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -80,7 +79,6 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel1.Controls.Add(coinPictureBox);
-            panel1.Controls.Add(coinAddPhotoButton);
             panel1.Location = new Point(401, 26);
             panel1.Name = "panel1";
             panel1.Size = new Size(211, 267);
@@ -93,19 +91,9 @@
             coinPictureBox.Location = new Point(2, 0);
             coinPictureBox.Name = "coinPictureBox";
             coinPictureBox.Size = new Size(209, 209);
+            coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             coinPictureBox.TabIndex = 29;
             coinPictureBox.TabStop = false;
-            // 
-            // coinAddPhotoButton
-            // 
-            coinAddPhotoButton.Anchor = AnchorStyles.None;
-            coinAddPhotoButton.Cursor = Cursors.Hand;
-            coinAddPhotoButton.Location = new Point(48, 229);
-            coinAddPhotoButton.Name = "coinAddPhotoButton";
-            coinAddPhotoButton.Size = new Size(114, 23);
-            coinAddPhotoButton.TabIndex = 30;
-            coinAddPhotoButton.Text = "Додати фото";
-            coinAddPhotoButton.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -329,7 +317,6 @@
         private Button createCoinButton;
         private Panel panel1;
         private PictureBox coinPictureBox;
-        private Button coinAddPhotoButton;
         private Label label11;
         private Label label9;
         private Label label10;

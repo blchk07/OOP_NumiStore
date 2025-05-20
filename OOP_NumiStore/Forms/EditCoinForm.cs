@@ -9,6 +9,8 @@ namespace OOP_NumiStore.Forms
     {
         public bool isSaved { get; private set; } = false;
         private CoinBase currentCoin { get; set; }
+        CoinsList coinsList = new CoinsList();
+        private string tempImagePath = string.Empty;
 
         public EditCoinForm(CoinBase coin)
         {
@@ -25,7 +27,14 @@ namespace OOP_NumiStore.Forms
             coinAvaiableCountTextBox.Text = coin.AvailableCount.ToString();
             coinDiametrTextBox.Text = coin.Diameter.ToString();
             coinSeriesComboBox.Text = coin.Series;
+            var seriesList = coinsList.AllCoins.Select(c => c.Series).Distinct().ToArray();
+            coinSeriesComboBox.Items.AddRange(seriesList);
             coinDescriptionTextBox.Text = coin.Description;
+            tempImagePath = coin.ImagePath;
+
+            coinPictureBox.AllowDrop = true;
+            coinPictureBox.DragEnter += coinPictureBox_DragEnter;
+            coinPictureBox.DragDrop += coinPictureBox_DragDrop;
 
             if (coin is RegularCoin regular)
             {
@@ -36,6 +45,23 @@ namespace OOP_NumiStore.Forms
             {
                 coinDenominationTextBox.Text = "";
                 coinDenominationTextBox.Enabled = false;
+            }
+
+            if (!string.IsNullOrEmpty(currentCoin.ImagePath) && File.Exists(currentCoin.ImagePath))
+            {
+                try
+                {
+                    coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
+                    coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                catch
+                {
+                    coinPictureBox.Image = null;
+                }
+            }
+            else
+            {
+                coinPictureBox.Image = null;
             }
         }
 
@@ -87,6 +113,11 @@ namespace OOP_NumiStore.Forms
                 regularCoin.Denomination = denomination;
             }
 
+            if (string.IsNullOrEmpty(tempImagePath))
+            {
+                MessageBox.Show("Будь ласка, виберіть зображення монети!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             currentCoin.Name = coinNameTextBox.Text.Trim();
             currentCoin.Year = year;
             currentCoin.Material = coinMaterialComboBox.Text.Trim();
@@ -96,9 +127,51 @@ namespace OOP_NumiStore.Forms
             currentCoin.Series = coinSeriesComboBox.Text.Trim();
             currentCoin.Description = coinDescriptionTextBox.Text.Trim();
 
+            string imageDirectory = Path.Combine(Application.StartupPath, "Images");
+            Directory.CreateDirectory(imageDirectory);
+            string newImagePath = Path.Combine(imageDirectory, Guid.NewGuid() + Path.GetExtension(tempImagePath));
+            File.Copy(tempImagePath, newImagePath, overwrite: true);
+            currentCoin.ImagePath = newImagePath;
+
             isSaved = true;
             MessageBox.Show("Зміни збережено!", "Успішна зміна", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
+        }
+
+        private void coinPictureBox_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string file = files[0].ToLower();
+
+                if (file.EndsWith(".jpg") || file.EndsWith(".jpeg") ||
+                    file.EndsWith(".png") ||
+                    file.EndsWith(".webp"))
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+                else
+                {
+                    MessageBox.Show("Будь ласка, виберіть зображення формату JPG, JPEG, WEBP або PNG", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Effect = DragDropEffects.None;
+                }
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void coinPictureBox_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                var file = files[0];
+                coinPictureBox.Image = Image.FromFile(file);
+                tempImagePath = file;
+            }
         }
     }
 }

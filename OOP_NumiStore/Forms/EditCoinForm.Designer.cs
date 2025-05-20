@@ -46,7 +46,6 @@
             coinDiametrTextBox = new TextBox();
             label11 = new Label();
             coinPictureBox = new PictureBox();
-            coinChangeButton = new Button();
             panel1 = new Panel();
             saveChangesButton = new Button();
             coinDescriptionTextBox = new RichTextBox();
@@ -206,25 +205,14 @@
             coinPictureBox.Location = new Point(2, 0);
             coinPictureBox.Name = "coinPictureBox";
             coinPictureBox.Size = new Size(209, 209);
+            coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             coinPictureBox.TabIndex = 29;
             coinPictureBox.TabStop = false;
-            // 
-            // coinChangeButton
-            // 
-            coinChangeButton.Anchor = AnchorStyles.None;
-            coinChangeButton.Cursor = Cursors.Hand;
-            coinChangeButton.Location = new Point(48, 229);
-            coinChangeButton.Name = "coinChangeButton";
-            coinChangeButton.Size = new Size(114, 23);
-            coinChangeButton.TabIndex = 30;
-            coinChangeButton.Text = "Змінити фото";
-            coinChangeButton.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel1.Controls.Add(coinPictureBox);
-            panel1.Controls.Add(coinChangeButton);
             panel1.Location = new Point(397, 16);
             panel1.Name = "panel1";
             panel1.Size = new Size(211, 265);
@@ -337,7 +325,6 @@
         private TextBox coinDiametrTextBox;
         private Label label11;
         private PictureBox coinPictureBox;
-        private Button coinChangeButton;
         private Panel panel1;
         private Button saveChangesButton;
         private RichTextBox coinDescriptionTextBox;

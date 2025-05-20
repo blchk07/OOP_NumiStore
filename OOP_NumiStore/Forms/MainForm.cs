@@ -39,6 +39,7 @@ namespace OOP_NumiStore.Forms
                 button1.Click += basketCustomerButtonClick;
                 button2.Visible = true;
                 button2.Text = "Замовлення";
+                button2.Click += ordersCustomerButtonClick;
             }
 
             loadCoins();
@@ -55,16 +56,15 @@ namespace OOP_NumiStore.Forms
 
             foreach (var coin in coins)
             {
-                BaseCoinBox listCoin = new BaseCoinBox(currentUser)
+                BaseCoinBox listCoin = new BaseCoinBox(currentUser, coin)
                 {
-                    Coin = coin,
                     Width = flowLayoutPanel1.Width - 20,
                     CoinTitle = coin.Name,
                     TypeCoin = coin.Type,
                     AvailableCountCoin = Convert.ToString(coin.AvailableCount),
                     YearCoin = Convert.ToString(coin.Year),
                     PriceCoin = Convert.ToString(coin.Price),
-                    CoinImage = coin.Image
+                    CoinImagePath = coin.ImagePath
                 };
 
                 if (isFirstControl)
@@ -133,13 +133,32 @@ namespace OOP_NumiStore.Forms
 
         private void ordersAdminButtonClick(object? sender, EventArgs e)
         {
+            OrdersForm ordersForm = new();
+            ordersForm.ShowDialog();
+        }
 
+        private void ordersCustomerButtonClick(object? sender, EventArgs e)
+        {
+            OrdersForm ordersForm = new();
+            ordersForm.ShowDialog();
         }
 
         private void basketCustomerButtonClick(object? sender, EventArgs e)
         {
             BasketForm basketForm = new();
             basketForm.ShowDialog();
+
+            if (basketForm.isOrderCreated)
+            {
+                MessageBox.Show(
+                    "Ваше замовлення успішно створене.\nДля перевірки його статусу перейдіть у розділ \"Замовлення\" на головній сторінці.",
+                    "Замовлення оформлено",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                CoinList = new CoinsList();
+                loadCoins();
+            }
         }
 
         private void createNewCoinButton_Click(object sender, EventArgs e)

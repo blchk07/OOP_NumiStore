@@ -10,9 +10,13 @@ namespace OOP_NumiStore
         public event EventHandler<CoinBase> DeleteCoinButtonClicked;
         public event EventHandler<CoinBase> CoinDetailsButtonClicked;
         public event EventHandler<CoinBase> CoinBasketButtonClicked;
-        public BaseCoinBox(User currentUser)
+
+        private string _coinImagePath;
+        public CoinBase Coin { get; set; }
+        public BaseCoinBox(User currentUser, CoinBase coin)
         {
             InitializeComponent();
+            this.Coin = coin;
             InitializeButtonsBlock(currentUser);
         }
 
@@ -20,9 +24,8 @@ namespace OOP_NumiStore
         {
             adminPanelButtons.Visible = currentUser is Admin;
             customerPanelButtons.Visible = currentUser is Customer;
+            coinBasketButton.Enabled = Coin.AvailableCount > 0;
         }
-
-        public CoinBase Coin { get; set; }
 
         [Category("Custom Props")]
         public string CoinTitle
@@ -55,10 +58,29 @@ namespace OOP_NumiStore
             set { priceCoinText.Text = $"Ціна: {value} грн."; }
         }
         [Category("Custom Props")]
-        public Image CoinImage
+        public string CoinImagePath
         {
-            get { return pictureCoin.Image; }
-            set { pictureCoin.Image = value; }
+            set
+            {
+                _coinImagePath = value;
+
+                if (!string.IsNullOrEmpty(_coinImagePath) && File.Exists(_coinImagePath))
+                {
+                    try
+                    {
+                        pictureCoin.Image = Image.FromFile(_coinImagePath);
+                        pictureCoin.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                    catch
+                    {
+                        pictureCoin.Image = null;
+                    }
+                }
+                else
+                {
+                    pictureCoin.Image = null;
+                }
+            }
         }
         [Category("Custom Props")]
         public Button CoinDetailButton

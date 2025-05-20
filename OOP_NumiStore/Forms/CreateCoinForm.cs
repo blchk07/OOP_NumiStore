@@ -1,11 +1,13 @@
 ﻿using OOP_NumiStore.Models;
 using System.Data;
+using System.Windows.Forms;
 
 namespace OOP_NumiStore.Forms
 {
     public partial class CreateCoinForm : Form
     {
         private bool isRegularCoin = true;
+        private string tempImagePath = null;
 
         public CreateCoinForm()
         {
@@ -28,8 +30,11 @@ namespace OOP_NumiStore.Forms
             {
                 coinSeriesComboBox.DropDownStyle = ComboBoxStyle.Simple;
             }
-
             regularCoinRadioButton.Checked = true;
+
+            coinPictureBox.AllowDrop = true;
+            coinPictureBox.DragEnter += coinPictureBox_DragEnter;
+            coinPictureBox.DragDrop += coinPictureBox_DragDrop;
         }
 
         public CoinBase newCoin { get; private set; }
@@ -111,6 +116,11 @@ namespace OOP_NumiStore.Forms
                 newCoin = new CollectibleCoin();
             }
 
+            if (string.IsNullOrEmpty(tempImagePath))
+            {
+                MessageBox.Show("Будь ласка, виберіть зображення монети!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             newCoin.Id = SetUniqueId();
             newCoin.Name = coinNameTextBox.Text.Trim();
             newCoin.Year = year;
@@ -120,6 +130,12 @@ namespace OOP_NumiStore.Forms
             newCoin.Diameter = diameter;
             newCoin.Series = coinSeriesComboBox.Text.Trim();
             newCoin.Description = coinDescriptionTextBox.Text.Trim();
+
+            string imageDirectory = Path.Combine(Application.StartupPath, "Images");
+            Directory.CreateDirectory(imageDirectory);
+            string newImagePath = Path.Combine(imageDirectory, Guid.NewGuid() + Path.GetExtension(tempImagePath));
+            File.Copy(tempImagePath, newImagePath, overwrite: true);
+            newCoin.ImagePath = newImagePath;
 
             isCreated = true;
 
@@ -135,6 +151,42 @@ namespace OOP_NumiStore.Forms
             if (!isRegularCoin)
             {
                 coinDenominationTextBox.Text = "";
+            }
+        }
+
+        private void coinPictureBox_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string file = files[0].ToLower();
+
+                if (file.EndsWith(".jpg") || file.EndsWith(".jpeg") ||
+                    file.EndsWith(".png") ||
+                    file.EndsWith(".webp"))
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+                else
+                {
+                    MessageBox.Show("Будь ласка, виберіть зображення формату JPG, JPEG, або PNG", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Effect = DragDropEffects.None;
+                }
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void coinPictureBox_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                var file = files[0];
+                coinPictureBox.Image = Image.FromFile(file);
+                tempImagePath = file;
             }
         }
     }
