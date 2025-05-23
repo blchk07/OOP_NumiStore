@@ -17,7 +17,7 @@ namespace OOP_NumiStore.Models
 
         public List<RegularCoin> RegularCoins { get; private set; } = new();
         public List<CollectibleCoin> CollectibleCoins { get; private set; } = new();
-        public IEnumerable<CoinBase> AllCoins => RegularCoins.Cast<CoinBase>().Concat(CollectibleCoins);
+        public IEnumerable<CoinBase> AllCoins => RegularCoins.Cast<CoinBase>().Concat(CollectibleCoins).OrderBy(coin => coin.Id);
 
         public CoinsList()
         {

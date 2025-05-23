@@ -1,4 +1,5 @@
 ﻿using OOP_NumiStore.Models;
+using System.Text;
 using System.Windows.Forms;
 
 namespace OOP_NumiStore.Forms
@@ -124,6 +125,45 @@ namespace OOP_NumiStore.Forms
             totalAmountLabel.Text = $"Сума: {CalcTotalAmount()} грн.";
         }
 
+        private string GenerateCheckText(Order order)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("===== ЧЕК =====");
+            sb.AppendLine($"Дата: {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
+            sb.AppendLine($"Номер замовлення: {order.OrderId}");
+            sb.AppendLine();
+            sb.AppendLine("Товари:");
+            sb.AppendLine("-------------------------------------");
+
+            foreach (var item in order.Items)
+            {
+                sb.AppendLine($"{item.Name}");
+                sb.AppendLine($"Кількість: {item.Quantity} шт");
+                sb.AppendLine($"Ціна за шт: {item.Price} грн");
+                sb.AppendLine($"Сума: {item.Total} грн");
+                sb.AppendLine();
+            }
+
+            sb.AppendLine("-------------------------------------");
+            sb.AppendLine($"Загальна сума: {order.TotalAmount} грн");
+            sb.AppendLine("===== Дякуємо за покупку! =====");
+
+            return sb.ToString();
+        }
+
+
+        private void SaveCheckToFile(string checkText)
+        {
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Checks");
+            Directory.CreateDirectory(directory);
+
+            string fileName = $"check_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            string filePath = Path.Combine(directory, fileName);
+
+            File.WriteAllText(filePath, checkText);
+        }
+
         private void createOrderButton_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Ви впевнені, що хочете оформити замовлення?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -167,6 +207,10 @@ namespace OOP_NumiStore.Forms
 
             currentCustomer.ClearBasket();
             usersManager.UpdateCustomers(currentCustomer);
+
+            var checkText = GenerateCheckText(order);
+            SaveCheckToFile(checkText);
+
             isOrderCreated = true;
             Close();
         }

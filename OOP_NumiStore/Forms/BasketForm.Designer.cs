@@ -64,9 +64,9 @@
             label1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(12, 6);
             label1.Name = "label1";
-            label1.Size = new Size(98, 30);
+            label1.Size = new Size(80, 30);
             label1.TabIndex = 3;
-            label1.Text = "Корзина";
+            label1.Text = "Кошик";
             // 
             // clearAllButton
             // 
@@ -122,7 +122,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "BasketForm";
-            Text = "Корзина";
+            Text = "Кошик";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

@@ -46,7 +46,7 @@
             // 
             // coinPictureBox
             // 
-            coinPictureBox.BackColor = SystemColors.ActiveCaption;
+            coinPictureBox.BackColor = SystemColors.Control;
             coinPictureBox.Location = new Point(23, 25);
             coinPictureBox.Name = "coinPictureBox";
             coinPictureBox.Size = new Size(148, 148);

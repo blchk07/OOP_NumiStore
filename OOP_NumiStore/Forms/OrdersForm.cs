@@ -17,7 +17,6 @@ namespace OOP_NumiStore.Models
         public OrdersForm()
         {
             InitializeComponent();
-
             List<Order> orders = currentUser is Customer ? ordersManager.LoadOrders(currentUser.Login) : ordersManager.LoadOrders();
             bool isFirstControl = true;
             orders.Reverse();
@@ -33,6 +32,20 @@ namespace OOP_NumiStore.Models
                 }
 
                 flowLayoutPanel1.Controls.Add(orderItemBox);
+            }
+
+            if (orders.Count == 0)
+            {
+                Label noItemsLabel = new Label
+                {
+                    Text = "Замовлень немає",
+                    AutoSize = true,
+                    Font = new Font("Segoe UI Semibold", 14, FontStyle.Bold),
+                    Margin = new Padding(220, 150, 0, 0),
+                };
+
+                flowLayoutPanel1.Controls.Add(noItemsLabel);
+                return;
             }
         }
     }

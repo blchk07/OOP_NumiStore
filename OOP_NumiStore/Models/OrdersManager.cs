@@ -16,25 +16,20 @@ namespace OOP_NumiStore.Models
     {
         List<Order> orders;
         private readonly string ordersFilePath = @"json\orders.json";
+        public OrdersManager() { LoadOrders(); }
 
-        public OrdersManager()
-        {
-            LoadOrders();
-        }
-
-        private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-            Converters = { new JsonStringEnumConverter() }
-        };
-
+        private static readonly JsonSerializerOptions _jsonOptions
+            = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                Converters = { new JsonStringEnumConverter() }
+            };
         public void AddOrder(Order order)
         {
             orders.Add(order);
             SaveOrders();
         }
-
         public void RemoveOrder(Guid orderId)
         {
             var order = orders.FirstOrDefault(o => o.OrderId == orderId);
@@ -44,7 +39,6 @@ namespace OOP_NumiStore.Models
                 SaveOrders();
             }
         }
-
         public void ChangeStatus(Guid orderId, OrderStatus status)
         {
             var order = orders.FirstOrDefault(o => o.OrderId == orderId);
@@ -54,7 +48,6 @@ namespace OOP_NumiStore.Models
                 SaveOrders();
             }
         }
-
         public void SaveOrders()
         {
             try
@@ -64,10 +57,10 @@ namespace OOP_NumiStore.Models
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Помилка під час збережння у файл. {ordersFilePath}:\n{ex.Message}", "Помилка збереження", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка під час збережння у файл. {ordersFilePath}:\n{ex.Message}",
+                    "Помилка збереження", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public List<Order> LoadOrders(string? customerLogin = null)
         {
             if (File.Exists(ordersFilePath))

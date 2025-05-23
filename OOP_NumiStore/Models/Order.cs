@@ -21,10 +21,8 @@ namespace OOP_NumiStore.Models
     {
         [Description("В процесі ⏳")]
         InProgress,
-
         [Description("Відправлено 🚚")]
         Shipped,
-
         [Description("Виконано ✅")]
         Completed
     }

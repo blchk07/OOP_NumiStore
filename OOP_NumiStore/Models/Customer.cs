@@ -8,7 +8,7 @@ namespace OOP_NumiStore.Models
 {
     class Customer : User
     {
-        public List<BasketItem> Basket { get; set; } = new();
+        public List<BasketItem> Basket { get; private set; } = new();
         public bool AddBasketItem(BasketItem item)
         {
             var existingItem = Basket.FirstOrDefault(b => b.CoinId == item.CoinId);
@@ -16,10 +16,7 @@ namespace OOP_NumiStore.Models
             {
                 existingItem.Quantity += item.Quantity;
             }
-            else
-            {
-                Basket.Add(item);
-            }
+            else Basket.Add(item);
             return true;
         }
         public bool EditBasketItem(BasketItem item)
@@ -32,12 +29,10 @@ namespace OOP_NumiStore.Models
             }
             return false;
         }
-
         public bool DeleteBasketItem(BasketItem item)
         {
             return Basket.Remove(item);
         }
-
         public bool ClearBasket()
         {
             Basket.Clear();

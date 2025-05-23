@@ -119,6 +119,7 @@ namespace OOP_NumiStore.Forms
             if (string.IsNullOrEmpty(tempImagePath))
             {
                 MessageBox.Show("Будь ласка, виберіть зображення монети!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             newCoin.Id = SetUniqueId();

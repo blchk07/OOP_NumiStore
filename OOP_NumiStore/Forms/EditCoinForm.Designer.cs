@@ -201,7 +201,8 @@
             // coinPictureBox
             // 
             coinPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            coinPictureBox.BackColor = SystemColors.ActiveCaption;
+            coinPictureBox.BackColor = SystemColors.Control;
+            coinPictureBox.BorderStyle = BorderStyle.FixedSingle;
             coinPictureBox.Location = new Point(2, 0);
             coinPictureBox.Name = "coinPictureBox";
             coinPictureBox.Size = new Size(209, 209);

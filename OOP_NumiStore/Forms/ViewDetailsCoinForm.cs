@@ -29,6 +29,23 @@ namespace OOP_NumiStore.Forms
             coinDiametrTextBox.Text = currentCoin.Diameter.ToString();
             coinSeriesTextBox.Text = currentCoin.Series;
             coinDescriptionTextBox.Text = currentCoin.Description;
+
+            if (!string.IsNullOrEmpty(currentCoin.ImagePath) && File.Exists(currentCoin.ImagePath))
+            {
+                try
+                {
+                    coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
+                    coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                catch
+                {
+                    coinPictureBox.Image = null;
+                }
+            }
+            else
+            {
+                coinPictureBox.Image = null;
+            }
         }
     }
 }

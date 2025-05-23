@@ -21,10 +21,7 @@ namespace OOP_NumiStore.Models
         public double Diameter { get; set; }
         public string Series { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Name} ({Year}) - {Material}";
-        }
+        public override string ToString() { return $"{Name} ({Year}) - {Material}"; }
     }
     public class RegularCoin : CoinBase
     {
@@ -34,6 +31,8 @@ namespace OOP_NumiStore.Models
     public class CollectibleCoin : CoinBase
     {
         public override string Type { get; } = "Сувенірна";
+
+        public override string ToString() { return $"{Name} ({Year}) - {Material} (сувенірна)"; }
     }
 
     public class OrderedCoin
