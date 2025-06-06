@@ -16,34 +16,37 @@ namespace OOP_NumiStore.Forms
         public CoinsList CoinList { get; private set; } = new CoinsList();
         User currentUser { get; set; }
         static ToolTip toolTip = new();
-
         public MainForm()
         {
             currentUser = UserSession.currentUser;
             InitializeComponent();
+
             userLoginLinkLabel.Text = $"{currentUser.Name} {currentUser.Surname}".Trim();
             toolTip.SetToolTip(userLoginLinkLabel, "Налаштування акаунту");
 
-            this.Text = currentUser is Customer ? "NumiStore - Головна сторінка" : "Адмін NumiStore - Головна сторінка";
-            createNewCoinButton.Visible = currentUser is Admin;
-
-            if (currentUser is Admin)
-            {
-                button1.Text = "Замовлення";
-                button1.Click += ordersAdminButtonClick;
-                button2.Visible = false;
-            }
-            else if (currentUser is Customer)
-            {
-                button1.Text = "Кошик";
-                button1.Click += basketCustomerButtonClick;
-                button2.Visible = true;
-                button2.Text = "Замовлення";
-                button2.Click += ordersCustomerButtonClick;
-            }
+            if (currentUser is Admin) ConfigureForAdmin();
+            else if (currentUser is Customer) ConfigureForCustomer();
 
             loadCoins();
             updateSearchAndFilterBlock();
+        }
+        private void ConfigureForAdmin()
+        {
+            this.Text = "Адмін NumiStore - Головна сторінка";
+            createNewCoinButton.Visible = true;
+            button1.Text = "Замовлення";
+            button1.Click += ordersAdminButtonClick;
+            button2.Visible = false;
+        }
+        private void ConfigureForCustomer()
+        {
+            this.Text = "NumiStore - Головна сторінка";
+            createNewCoinButton.Visible = false;
+            button1.Text = "Кошик";
+            button1.Click += basketCustomerButtonClick;
+            button2.Visible = true;
+            button2.Text = "Замовлення";
+            button2.Click += ordersCustomerButtonClick;
         }
 
         public void loadCoins(List<CoinBase>? coins = null)

@@ -22,14 +22,28 @@ namespace OOP_NumiStore.Forms
         {
             InitializeComponent();
             this.currentCoin = currentCoin;
+            selectedCountNumeric.TextChanged += selectedCountNumeric_TextChanged;
 
+            InitializeLabels();
+            InitializePicture();
+        }
+
+        private void InitializeLabels()
+        {
             selectedCountNumeric.Maximum = currentCoin.AvailableCount;
+
             coinNameText.Text = currentCoin.Name;
             coinTypeLabel.Text = currentCoin.Type;
             avaiableCountLabel.Text = currentCoin.AvailableCount.ToString();
-            oneCoinPriceLabel.Text = currentCoin.Price.ToString() + " грн.";
-            resultLabel.Text = $"Загалом: {selectedCountNumeric.Value} x {currentCoin.Price} = " + (selectedCountNumeric.Value * currentCoin.Price).ToString() + " грн.";
+            oneCoinPriceLabel.Text = $"{currentCoin.Price} грн.";
 
+            int count = (int)selectedCountNumeric.Value;
+            decimal total = count * currentCoin.Price;
+            resultLabel.Text = $"Загалом: {count} x {currentCoin.Price} = {total} грн.";
+        }
+
+        private void InitializePicture()
+        {
             if (!string.IsNullOrEmpty(currentCoin.ImagePath) && File.Exists(currentCoin.ImagePath))
             {
                 try
@@ -37,17 +51,9 @@ namespace OOP_NumiStore.Forms
                     coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
                     coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 }
-                catch
-                {
-                    coinPictureBox.Image = null;
-                }
+                catch { coinPictureBox.Image = null; }
             }
-            else
-            {
-                coinPictureBox.Image = null;
-            }
-
-            selectedCountNumeric.TextChanged += selectedCountNumeric_TextChanged;
+            else coinPictureBox.Image = null;
         }
 
         public void selectedCountNumeric_TextChanged(object sender, EventArgs e)

@@ -11,7 +11,6 @@ namespace OOP_NumiStore
             InitializeComponent();
             usersManager = new UsersManager();
         }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             string login = loginTextBox.Text.Trim();

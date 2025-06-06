@@ -11,41 +11,47 @@ namespace OOP_NumiStore.Forms
         private CoinBase currentCoin { get; set; }
         CoinsList coinsList = new CoinsList();
         private string tempImagePath = string.Empty;
-
         public EditCoinForm(CoinBase coin)
         {
             InitializeComponent();
             currentCoin = coin;
 
-            typeCoinLabel.Text += coin.Type;
-            coinIdTextBox.Text = coin.Id.ToString();
-            coinNameTextBox.Text = coin.Name;
-            coinYearTextBox.Text = coin.Year.ToString();
+            InitializeFields();
+            InitializePictureBox();
+            InitializeComboBoxes();
+            InitializeDenomination();
+        }
+        private void InitializeFields()
+        {
+            typeCoinLabel.Text += currentCoin.Type;
+            coinIdTextBox.Text = currentCoin.Id.ToString();
+            coinNameTextBox.Text = currentCoin.Name;
+            coinYearTextBox.Text = currentCoin.Year.ToString();
+            coinPriceTextBox.Text = currentCoin.Price.ToString();
+            coinAvaiableCountTextBox.Text = currentCoin.AvailableCount.ToString();
+            coinDiametrTextBox.Text = currentCoin.Diameter.ToString();
+            coinSeriesComboBox.Text = currentCoin.Series;
+            coinDescriptionTextBox.Text = currentCoin.Description;
+            tempImagePath = currentCoin.ImagePath;
+        }
+        private void InitializeComboBoxes()
+        {
             coinMaterialComboBox.Items.AddRange(CoinSettings.coinMaterials.ToArray());
-            coinMaterialComboBox.Text = coin.Material;
-            coinPriceTextBox.Text = coin.Price.ToString();
-            coinAvaiableCountTextBox.Text = coin.AvailableCount.ToString();
-            coinDiametrTextBox.Text = coin.Diameter.ToString();
-            coinSeriesComboBox.Text = coin.Series;
-            var seriesList = coinsList.AllCoins.Select(c => c.Series).Distinct().ToArray();
-            coinSeriesComboBox.Items.AddRange(seriesList);
-            coinDescriptionTextBox.Text = coin.Description;
-            tempImagePath = coin.ImagePath;
+            coinMaterialComboBox.Text = currentCoin.Material;
 
+            var seriesList = coinsList.AllCoins
+                .Select(c => c.Series)
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .Distinct()
+                .ToArray();
+
+            coinSeriesComboBox.Items.AddRange(seriesList);
+        }
+        private void InitializePictureBox()
+        {
             coinPictureBox.AllowDrop = true;
             coinPictureBox.DragEnter += coinPictureBox_DragEnter;
             coinPictureBox.DragDrop += coinPictureBox_DragDrop;
-
-            if (coin is RegularCoin regular)
-            {
-                coinDenominationTextBox.Text = regular.Denomination.ToString();
-                coinDenominationTextBox.Enabled = true;
-            }
-            else
-            {
-                coinDenominationTextBox.Text = "";
-                coinDenominationTextBox.Enabled = false;
-            }
 
             if (!string.IsNullOrEmpty(currentCoin.ImagePath) && File.Exists(currentCoin.ImagePath))
             {
@@ -54,14 +60,22 @@ namespace OOP_NumiStore.Forms
                     coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
                     coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 }
-                catch
-                {
-                    coinPictureBox.Image = null;
-                }
+                catch { coinPictureBox.Image = null; }
+            }
+            else coinPictureBox.Image = null;
+        }
+
+        private void InitializeDenomination()
+        {
+            if (currentCoin is RegularCoin regular)
+            {
+                coinDenominationTextBox.Text = regular.Denomination.ToString();
+                coinDenominationTextBox.Enabled = true;
             }
             else
             {
-                coinPictureBox.Image = null;
+                coinDenominationTextBox.Text = "";
+                coinDenominationTextBox.Enabled = false;
             }
         }
 

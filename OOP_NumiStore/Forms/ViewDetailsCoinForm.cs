@@ -13,11 +13,17 @@ namespace OOP_NumiStore.Forms
 {
     public partial class ViewDetailsCoinForm: Form
     {
+        CoinBase currentCoin;
         public ViewDetailsCoinForm(CoinBase currentCoin)
         {
             InitializeComponent();
-
-            if (currentCoin is RegularCoin regular) coinDenominationTextBox.Text = regular.Denomination.ToString();
+            this.currentCoin = currentCoin;
+            InitializeData();
+        }
+        private void InitializeData()
+        {
+            if (currentCoin is RegularCoin regular)
+                coinDenominationTextBox.Text = regular.Denomination.ToString();
 
             typeCoinLabel.Text += currentCoin.Type;
             coinIdTextBox.Text = currentCoin.Id.ToString();
@@ -37,15 +43,9 @@ namespace OOP_NumiStore.Forms
                     coinPictureBox.Image = Image.FromFile(currentCoin.ImagePath);
                     coinPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 }
-                catch
-                {
-                    coinPictureBox.Image = null;
-                }
+                catch { coinPictureBox.Image = null; }
             }
-            else
-            {
-                coinPictureBox.Image = null;
-            }
+            else coinPictureBox.Image = null;
         }
     }
 }

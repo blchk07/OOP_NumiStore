@@ -28,10 +28,7 @@ namespace OOP_NumiStore
             orderStatusLabel.Text = GetEnumDescription(currentOrder.Status);
 
             changeStatusButton.Visible = currentUser is Admin;
-            if (currentUser is Admin admin)
-            {
-                SetStatusButton();
-            }
+            if (currentUser is Admin admin) SetStatusButton();
         }
 
         private static string GetEnumDescription(Enum value)
